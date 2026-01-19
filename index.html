@@ -151,6 +151,7 @@
       justify-content: center;
       color: #9ca3af;
       font-size: 0.875rem;
+      overflow: hidden;
     }
 
     .pattern-image img {
@@ -305,7 +306,7 @@
         category: 'chironomid',
         description: 'Dark Zucchini 베이스에 Red Ribbing을 사용한 리얼리스틱 카이로노미드 퓨파. Thin UV + Varnish 마무리.',
         hook: '#14',
-        image: null,
+        image: 'flies/chironomid/zucchini-pupa/zucchini-pupa.jpg',
         date: '2025-01-20',
         url: 'flies/chironomid/zucchini-pupa/index.html'
       }
@@ -334,7 +335,7 @@
 
       const imageContent = pattern.image 
         ? `<img src="${pattern.image}" alt="${pattern.name}">`
-        : `<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">📸 이미지 준비중</div>`;
+        : `<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 3rem;">🎣</div>`;
 
       card.innerHTML = `
         <div class="pattern-image">${imageContent}</div>
