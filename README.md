@@ -16,6 +16,7 @@ https://caddis-gr.github.io/fly-tying-archive/
 - [화이트 버전 리치 (White Version Leech)](https://caddis-gr.github.io/fly-tying-archive/flies/streamer/white-version-leech/index.html)
 - [Glow Bead Marabou Leech](https://caddis-gr.github.io/fly-tying-archive/flies/streamer/glow-bead-marabou-leech/index.html)
 - [White Zonker Collection](https://caddis-gr.github.io/fly-tying-archive/flies/streamer/white-zonker-collection/index.html)
+- [Black Torpedo Leech](https://caddis-gr.github.io/fly-tying-archive/flies/streamer/black-torpedo-leech/index.html)
 
 
 https://caddis-gr.github.io/fly-tying-archive/flies/streamer/glow-bead-marabou-leech/index.html
