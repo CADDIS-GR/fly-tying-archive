@@ -11,6 +11,7 @@ https://caddis-gr.github.io/fly-tying-archive/
 
 #### Chironomid
 - [Zucchini Chironomid Pupa](https://caddis-gr.github.io/fly-tying-archive/flies/chironomid/zucchini-pupa/index.html)
+- [2026 Chironomid Pupa](https://caddis-gr.github.io/fly-tying-archive/flies/chironomid/2026-chironomid-pupa/index.html)
 
 #### Streamer
 - [화이트 버전 리치 (White Version Leech)](https://caddis-gr.github.io/fly-tying-archive/flies/streamer/white-version-leech/index.html)
