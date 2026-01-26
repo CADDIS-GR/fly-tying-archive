@@ -36,6 +36,69 @@
         .group:hover .hover-scale {
             transform: scale(1.1);
         }
+        /* Image Modal Styles */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+        .image-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10000;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+        }
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+        .clickable-image {
+            cursor: zoom-in;
+            transition: opacity 0.3s;
+        }
+        .clickable-image:hover {
+            opacity: 0.9;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-purple-200">
@@ -56,6 +119,7 @@
                 <span class="font-black tracking-tighter text-lg uppercase text-purple-900">낚시대장 Archive</span>
             </div>
             <div class="hidden md:flex items-center gap-6 text-xs font-black uppercase tracking-widest text-slate-400">
+                <a href="../../../index.html" class="hover:text-purple-600 transition-colors">← Back to Archive</a>
                 <a href="#patterns" class="hover:text-purple-600 transition-colors">Patterns</a>
                 <a href="#tactics" class="hover:text-purple-600 transition-colors">Tactics</a>
                 <button class="px-4 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-100 rounded-full transition-all font-bold">
@@ -165,7 +229,7 @@
             <div class="group bg-white rounded-[2rem] overflow-hidden border border-purple-50 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col h-full">
                 <div class="h-2 bg-gradient-to-r from-purple-600 to-rose-400"></div>
                 <div class="h-64 overflow-hidden relative bg-purple-50/30 shrink-0">
-                    <img src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/PinkLarvar_3D.jpg" alt="Pink Larva 3D" class="w-full h-full object-cover hover-scale">
+                    <img src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/PinkLarvar_3D.jpg" alt="Pink Larva 3D" class="w-full h-full object-cover hover-scale clickable-image" onclick="openImageModal(this.src)">
                     <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
                 </div>
                 <div class="p-8 flex flex-col flex-grow">
@@ -207,7 +271,7 @@
             <div class="group bg-white rounded-[2rem] overflow-hidden border border-purple-50 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col h-full">
                 <div class="h-2 bg-gradient-to-r from-rose-400 to-rose-200"></div>
                 <div class="h-64 overflow-hidden relative bg-purple-50/30 shrink-0">
-                    <img src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/PinkLarva_2D.jpg" alt="Pink Larva 2D" class="w-full h-full object-cover hover-scale">
+                    <img src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/PinkLarva_2D.jpg" alt="Pink Larva 2D" class="w-full h-full object-cover hover-scale clickable-image" onclick="openImageModal(this.src)">
                     <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
                 </div>
                 <div class="p-8 flex flex-col flex-grow">
@@ -249,7 +313,7 @@
             <div class="group bg-white rounded-[2rem] overflow-hidden border border-purple-50 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col h-full">
                 <div class="h-2 bg-gradient-to-r from-purple-200 to-indigo-100"></div>
                 <div class="h-64 overflow-hidden relative bg-purple-50/30 shrink-0">
-                    <img src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/WhitePupa.jpg" alt="White Pupa" class="w-full h-full object-cover hover-scale">
+                    <img src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/WhitePupa.jpg" alt="White Pupa" class="w-full h-full object-cover hover-scale clickable-image" onclick="openImageModal(this.src)">
                     <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
                 </div>
                 <div class="p-8 flex flex-col flex-grow">
@@ -342,6 +406,35 @@
             </span>
         </div>
     </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.classList.add('active');
+            modalImg.src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC 키로 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
 
 </body>
 </html>
