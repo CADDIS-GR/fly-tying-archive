@@ -37,9 +37,127 @@
             background: rgba(0,0,0,0.1);
             border-radius: 10px;
         }
+        
+        /* Image Modal Styles */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .image-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease-out;
+        }
+        
+        .image-modal img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -1rem;
+            right: -1rem;
+            width: 3rem;
+            height: 3rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+        }
+        
+        .modal-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            background: #f1f5f9;
+        }
+        
+        .clickable-image {
+            cursor: zoom-in;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .clickable-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: inherit;
+        }
+        
+        .clickable-image:hover::after {
+            opacity: 1;
+        }
+        
+        .clickable-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .modal-caption {
+            position: absolute;
+            bottom: -3rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex items-center justify-center p-6 md:p-12 overflow-x-hidden selection:bg-purple-100">
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <div class="modal-close" id="modalClose">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </div>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
 
     <!-- Back Button -->
     <a href="../../../index.html" class="fixed top-4 left-4 z-50 bg-white px-4 py-2 rounded-full shadow-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-all hover:shadow-xl flex items-center gap-2">
@@ -273,9 +391,9 @@
                                 { img: images.olive, base: "Tan/Cream Base", result: "Natural Clarity", desc: "맑은 물에서 가장 자연스러운 수중 발색. 높은 경계심 타파.", color: "bg-yellow-100" },
                                 { img: images.wine, base: "Red/Wine Base", result: "Aggressive Vividness", desc: "피딩 타임이나 흐린 물에서 강력한 존재감과 공격성 자극.", color: "bg-red-100" },
                                 { img: images.olive, base: "Chartreuse Base", result: "Electric Olive", desc: "배어 나오는 형광기가 활성도 좋은 개체를 빠르게 유혹.", color: "bg-lime-100" }
-                            ].map(item => `
+                            ].map((item, idx) => `
                                 <div class="group bg-white rounded-[2.5rem] border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl transition-all">
-                                    <div class="h-40 overflow-hidden relative">
+                                    <div class="h-40 overflow-hidden relative clickable-image" data-img="${item.img}" data-caption="${item.result}">
                                         <img src="${item.img}" alt="${item.result}" class="w-full h-full object-cover">
                                     </div>
                                     <div class="p-6 space-y-3">
@@ -338,6 +456,12 @@
         const prevBtn = document.getElementById('prev-btn');
         const bgGlow1 = document.getElementById('bg-glow-1');
         const bgGlow2 = document.getElementById('bg-glow-2');
+        
+        // Modal elements
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const modalClose = document.getElementById('modalClose');
 
         function updateUI() {
             const card = cards[activeTab];
@@ -371,7 +495,48 @@
 
             // Refresh Icons
             lucide.createIcons();
+            
+            // Attach click handlers to images
+            attachImageClickHandlers();
         }
+
+        function attachImageClickHandlers() {
+            const clickableImages = document.querySelectorAll('.clickable-image');
+            clickableImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    const imgSrc = this.getAttribute('data-img');
+                    const caption = this.getAttribute('data-caption');
+                    openModal(imgSrc, caption);
+                });
+            });
+        }
+
+        function openModal(imgSrc, caption) {
+            modalImage.src = imgSrc;
+            modalCaption.textContent = caption;
+            imageModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            imageModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Modal close handlers
+        modalClose.addEventListener('click', closeModal);
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === imageModal) {
+                closeModal();
+            }
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
 
         nextBtn.addEventListener('click', () => {
             activeTab = (activeTab + 1) % cards.length;
