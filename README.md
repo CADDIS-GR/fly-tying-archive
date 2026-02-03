@@ -80,7 +80,7 @@
 > 과하지 않기 때문에 오래 쓰이고, 말이 없기 때문에 기억에 남는다."*
 
 - **테마:** 조용한 신호 - 블루 컬러 스토리
-- **포함 패턴:** 3개
+- **포함 패턴:** 4개
   1. **Blue Pheasant Tail** (#16)
      - FM5140 Jig Hook
      - Blue Flashabou Thorax
@@ -97,6 +97,13 @@
      - Blue Silk Thread
      - Classic Spider Wet Fly
      - 느긋하게 천천히 - 당기고 멈추고 반복
+  
+  4. **Blue Collar Worker** (#14)
+     - FM5095 (FullingMill)
+     - Uni Thread 8/0 (Silver Doctor Blue)
+     - Pheasant Tail & Ribbed
+     - CDC Wing + Silver Bead 2.3mm
+     - 실버 비드와 블루 스레드의 조화
 
 - **철학:**
   - 물속에서 가장 오래 남는 색
@@ -144,7 +151,11 @@
   - 과장되지 않은 신호
   - 브라운 계열과의 관계
   - 콜라로서의 블루
-- 🎣 **3개 패턴 갤러리**
+- 🎣 **4개 패턴 갤러리**
+  - Blue Pheasant Tail
+  - Blue Pupa
+  - Blue Spider
+  - Blue Collar Worker
   - 각 패턴 상세 스펙
   - 재료 정보
   - 사용 테크닉
@@ -200,6 +211,7 @@ fly-tying-archive/
     ├── BluePheasantTail.jpg            # ⭐ NEW! 블루 페전트 테일
     ├── BluePupa.jpg                    # ⭐ NEW! 블루 퓨파
     ├── BlueSpider.jpg                  # ⭐ NEW! 블루 스파이더
+    ├── BlueCollarWorker.jpg            # ⭐ NEW! 블루 칼라 워커
     └── ...
 ```
 
@@ -372,7 +384,16 @@ git push origin main
 
 ## 📅 업데이트 로그
 
-### 2025-02-03 ⭐ 블루 컬렉션 추가
+### 2025-02-03 ⭐ 블루 컬렉션 업데이트
+- 📚 **Blue Collar Worker 패턴 추가**
+  - FM5095 #14 (FullingMill)
+  - 실버 비드와 블루 스레드의 조화
+  - Blue Collection 총 4개 패턴 완성
+- 📊 **블루 컬렉션 확장**
+  - 다양한 블루 활용법 시연
+  - 느린 스위밍 공통 테마
+
+### 2025-01-24 ⭐ 블루 컬렉션 추가
 - 📚 **Collection 카테고리 신설**
   - 여러 패턴을 하나의 테마로 묶는 컬렉션 형식
 - 🎨 **Blue Collection - Quiet Signal 추가**
