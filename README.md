@@ -1,7 +1,7 @@
 # 🎣 Fly Tying Archive
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success)](https://caddis-gr.github.io/fly-tying-archive/)
-[![Contents](https://img.shields.io/badge/Contents-8-blue)]()
+[![Contents](https://img.shields.io/badge/Contents-9-blue)]()
 [![Categories](https://img.shields.io/badge/Categories-4-purple)]()
 
 관리형 낚시터(저수지) 플라이 낚시를 위한 타잉 패턴 및 철학 아카이브입니다.
@@ -12,7 +12,7 @@
 
 **🔗 라이브 사이트:** [https://caddis-gr.github.io/fly-tying-archive/](https://caddis-gr.github.io/fly-tying-archive/)
 
-## 📚 등록된 콘텐츠 (8개)
+## 📚 등록된 콘텐츠 (9개)
 
 ### 🦟 Chironomid (2개)
 
@@ -73,7 +73,7 @@
   - 비교 테이블 (Bead vs Yarn)
   - 철학 섹션 (Quote 스타일)
 
-### 📚 Collection (1개) ⭐ NEW!
+### 📚 Collection (2개)
 
 #### 8. Blue Collection - Quiet Signal
 > *"블루는 늘 마지막에 고려되고, 하지만 한 번 선택되면 쉽게 빠지지 않는다.  
@@ -117,6 +117,55 @@
   - 미니멀하고 절제된 레이아웃
   - 이미지 줌 모달 기능
   - 느린 애니메이션 효과
+
+#### 9. White Pupa, Pink Larva Collection ⭐ NEW!
+> *"입질은 우연이 아니라, 완벽하게 설계된 '뉴앙스'의 결과다."*
+
+- **테마:** 프리미엄 동절기 3종 세트
+- **포함 패턴:** 3개
+  1. **Pink Larva 3D** (#14)
+     - DAIICHI 1760
+     - UTC FL Pink 70D (Under Thread & Body)
+     - Red wire (BR) Ribbing
+     - 한 사이즈 굵은 와이어로 입체적 반사 극대화
+     - 깊은 수심에서도 강렬한 시각 자극
+     - **시즌:** 한겨울 물색 맑고 햇살 좋은 날
+  
+  2. **Pink Larva 2D** (#14)
+     - DAIICHI 1760
+     - UTC FL Pink 70D (Under Thread)
+     - Veevus BQ14 (Body)
+     - Flat Red Wire (XS) Ribbing
+     - 레진 코팅 최소화 - 슬림한 실루엣
+     - 재료 본연의 질감
+     - **시즌:** 활성도가 극도로 낮아진 정오 시간대
+  
+  3. **White Pupa** (#14)
+     - DAIICHI 1760
+     - GSP White 50D (Under Thread)
+     - Glo-Brite #16 (Body)
+     - White Bead
+     - 가장 무난한 선택지
+     - 저광도 상황에서 UV 신호 극대화
+     - **시즌:** 그늘지고 수심이 깊은 곳, 골든 타임
+
+- **핵심 기법:**
+  - **Bubble Dot** - 바니시가 중력을 따라 비드 아래로 흐르며 형성되는 미세한 방울로 유충이 부상할 때 머금는 공기방울 재현
+  - **Thin UV Resin + Vanish Coat** - 즉석 경화로 완벽한 마무리
+  - **DAIICHI 1760** - 관리형 저수지 최적화 훅
+
+- **Master's Field Note:**
+  - **Sizing** - 작을수록 송어는 부담 없이 삼키고 돌아섬
+  - **Depth** - 카운트다운을 통해 송어가 유영하는 정확한 수심 찾기
+  - **Action** - 자연스러운 스위밍 동작으로 아주 느리게 유혹
+
+- **특징:**
+  - 프리미엄 퍼플 그라디언트 디자인
+  - 매거진 스타일 타이포그래피
+  - Bubble Dot 핵심 기법 하이라이트
+  - 3개 패턴 상세 스펙 카드
+  - 이미지 줌 모달 기능
+  - Master's Field Note 섹션
 
 ## ✨ 주요 기능
 
@@ -165,19 +214,48 @@
   - 이미지 줌 모달
   - 느린 floating 애니메이션
 
+### White Pupa, Pink Larva Collection 페이지 ⭐ NEW!
+- 💜 **프리미엄 디자인** - 퍼플 그라디언트 배경
+  - 세련된 내비게이션
+  - Archive Index 라벨
+  - Master's Fly Tying Series 배지
+  - 2026 Edt. 타임스탬프
+- 🎨 **히어로 섹션**
+  - 대형 타이포그래피 (White Pupa, Pink Larva)
+  - 철학 Quote: "입질은 우연이 아니라, 완벽하게 설계된 '뉴앙스'의 결과다"
+  - Workspace 배경 이미지
+  - Chironomid Collection 라벨
+- 🔬 **Core Tech 섹션**
+  - Master's Specs (Hook, Finish, Curing)
+  - **Bubble Dot Highlight** - 핵심 기법 강조 박스
+- 🎣 **3개 패턴 카드**
+  - Pink Larva 3D - 입체적 반사, 공격성 극대화
+  - Pink Larva 2D - 슬림한 실루엣, 예민한 입질
+  - White Pupa - 순수한 화이트, UV 유혹
+  - 각 패턴 상세 스펙 & 재료 정보
+  - 사용 조건 가이드
+- 💡 **Master's Field Note**
+  - Sizing, Depth, Action 핵심 전략
+  - 아이콘 기반 시각화
+- 📸 **이미지 줌 모달** - 클릭으로 확대, ESC 키로 닫기
+
 ## 🛠️ 기술 스택
 
 - **Frontend:** HTML5, CSS3, Vanilla JavaScript
 - **Framework:** Tailwind CSS 3.x (CDN)
-- **Icons:** Inline SVG
-- **Fonts:** System fonts (-apple-system, BlinkMacSystemFont, Segoe UI)
+- **Icons:** Font Awesome 6.5.1, Inline SVG
+- **Fonts:** 
+  - Inter (영문)
+  - Noto Sans KR (한글)
+  - System fonts (-apple-system, BlinkMacSystemFont, Segoe UI)
 - **Hosting:** GitHub Pages
 - **Design:** 
   - Glassmorphism (메인 페이지)
   - Hero Section (기법 페이지)
   - Magazine Style Typography
   - Modal Overlay (이미지 확대)
-  - Light Blue Gradient (컬렉션 페이지)
+  - Light Blue Gradient (블루 컬렉션)
+  - Purple Gradient (핑크 라바 컬렉션)
 
 ## 📂 프로젝트 구조
 
@@ -190,16 +268,18 @@ fly-tying-archive/
 │   │   ├── zucchini-pupa/
 │   │   │   ├── index.html
 │   │   │   └── zucchini-pupa.jpg
-│   │   └── 2026-chironomid-pupa/
-│   │       ├── index.html
-│   │       └── olive-chironomid.jpg
+│   │   ├── 2026-chironomid-pupa/
+│   │   │   ├── index.html
+│   │   │   └── olive-chironomid.jpg
+│   │   └── white-pupa-pink-larva/      # ⭐ NEW! 핑크 라바 컬렉션
+│   │       └── index.html              # 3개 패턴 (3D, 2D, White)
 │   ├── streamer/
 │   │   ├── white-version-leech/
 │   │   ├── glow-bead-marabou-leech/
 │   │   ├── white-zonker-collection/
 │   │   └── black-torpedo-leech/
-│   ├── blue-collection/                # ⭐ NEW! 블루 컬렉션
-│   │   ├── index.html                  # 컬러 스토리 + 3패턴
+│   ├── blue-collection/                # 블루 컬렉션
+│   │   ├── index.html                  # 컬러 스토리 + 4패턴
 │   │   └── README.md                   # 컬렉션 문서
 │   └── tech/                           # 기법 문서
 │       └── white-dot-philosophy/
@@ -208,10 +288,13 @@ fly-tying-archive/
     ├── Pupa.jpg                        # Chironomid 분석
     ├── WhiteBead.jpg                   # 비드 재료
     ├── WhiteYarn.jpg                   # 얀 재료
-    ├── BluePheasantTail.jpg            # ⭐ NEW! 블루 페전트 테일
-    ├── BluePupa.jpg                    # ⭐ NEW! 블루 퓨파
-    ├── BlueSpider.jpg                  # ⭐ NEW! 블루 스파이더
-    ├── BlueCollarWorker.jpg            # ⭐ NEW! 블루 칼라 워커
+    ├── BluePheasantTail.jpg            # 블루 페전트 테일
+    ├── BluePupa.jpg                    # 블루 퓨파
+    ├── BlueSpider.jpg                  # 블루 스파이더
+    ├── BlueCollarWorker.jpg            # 블루 칼라 워커
+    ├── PinkLarvar_3D.jpg               # ⭐ NEW! 핑크 라바 3D
+    ├── PinkLarva_2D.jpg                # ⭐ NEW! 핑크 라바 2D
+    ├── WhitePupa.jpg                   # ⭐ NEW! 화이트 퓨파
     └── ...
 ```
 
@@ -248,7 +331,7 @@ mkdir -p flies/카테고리명/패턴명/
 
 ```javascript
 {
-  id: 9,
+  id: 10,
   name: '패턴 이름',
   category: 'chironomid', // 또는 streamer, nymph, dry-fly, emerger
   description: '패턴 설명',
@@ -274,7 +357,7 @@ mkdir -p flies/컬렉션명/
 #### 3. 메인 index.html 수정
 ```javascript
 {
-  id: 9,
+  id: 10,
   name: '컬렉션 이름',
   category: 'collection',
   description: '컬렉션 설명',
@@ -300,7 +383,7 @@ Tailwind CSS 기반 프리미엄 디자인 페이지 작성
 
 ```javascript
 {
-  id: 9,
+  id: 10,
   name: '기법 이름',
   category: 'technique',
   description: '기법 설명',
@@ -345,6 +428,17 @@ git push origin main
   - 본문: `#334155` (슬레이트)
   - 강조: `#0284c7` (스카이 블루)
 
+#### 핑크 라바 컬렉션 페이지 ⭐ NEW!
+- **Background:** `#fcfaff` (라이트 퍼플)
+- **Decor Blur:** `purple-100`, `indigo-100` (배경 원형 블러)
+- **Card:** `white` (순백)
+- **Border:** `purple-100`, `purple-50` (라이트 퍼플)
+- **Accent:** `purple-600` → `indigo-700` (퍼플-인디고 그라디언트)
+- **Text:**
+  - 제목: `slate-900` (다크)
+  - 본문: `slate-500`, `slate-600` (미드 그레이)
+  - 강조: `purple-600`, `rose-500` (퍼플, 로즈)
+
 ### 타이포그래피
 
 #### 메인 페이지
@@ -364,6 +458,13 @@ git push origin main
 - **본문:** 400 weight, leading-relaxed (1.9)
 - **강조:** 500 weight, tracking-normal
 
+#### 핑크 라바 컬렉션 페이지 ⭐ NEW!
+- **Hero Title:** 900 weight, 3xl-7xl, tracking-tighter
+- **섹션 제목:** 800-900 weight, tracking-tight, uppercase
+- **본문:** 400-500 weight, leading-relaxed
+- **강조:** 700 weight, italic
+- **라벨:** 800-900 weight, tracking-[0.2em-0.3em], uppercase
+
 ### 레이아웃 패턴
 
 #### 카드 스타일
@@ -382,7 +483,27 @@ git push origin main
 - **그리드:** repeat(auto-fit, minmax(350px, 1fr))
 - **애니메이션:** float 6s ease-in-out infinite
 
+#### 핑크 라바 컬렉션 레이아웃 ⭐ NEW!
+- **컨테이너:** max-width 1200px
+- **패턴 그리드:** 3 columns (responsive)
+- **Border Radius:** 2rem-2.5rem (둥근 카드)
+- **애니메이션:** hover scale, translate
+
 ## 📅 업데이트 로그
+
+### 2025-01-30 ⭐ 핑크 라바 컬렉션 추가
+- 📚 **White Pupa, Pink Larva Collection 추가**
+  - 프리미엄 동절기 3종 세트
+  - Pink Larva 3D - 입체적 반사 극대화
+  - Pink Larva 2D - 슬림한 실루엣
+  - White Pupa - 순수한 화이트 UV 신호
+  - Bubble Dot 핵심 기법 하이라이트
+  - Master's Field Note 섹션
+  - 프리미엄 퍼플 그라디언트 디자인
+  - 매거진 스타일 타이포그래피
+- 📊 **통계 업데이트**
+  - 총 콘텐츠: 9개 (패턴 6 + 기법 1 + 컬렉션 2)
+  - 카테고리: 4개 (Chironomid, Streamer, Technique, Collection)
 
 ### 2025-02-03 ⭐ 블루 컬렉션 업데이트
 - 📚 **Blue Collar Worker 패턴 추가**
@@ -436,7 +557,7 @@ git push origin main
   - [ ] Under-Layer 밸런싱 기법
   - [ ] Ribbing 간격 전략
   - [ ] Dubbing 블렌딩 비율
-  - [ ] Bubble Dot 표현법
+  - [x] Bubble Dot 표현법 ✅ (핑크 라바 컬렉션에 포함)
 - [ ] 기존 패턴 프리미엄 디자인으로 업그레이드
 - [ ] Nymph 카테고리 활성화 및 패턴 추가
 
@@ -462,6 +583,9 @@ git push origin main
 > *"블루는 늘 마지막에 고려되고, 하지만 한 번 선택되면 쉽게 빠지지 않는다.  
 > 과하지 않기 때문에 오래 쓰이고, 말이 없기 때문에 기억에 남는다."*  
 > — Blue Collection
+
+> *"입질은 우연이 아니라, 완벽하게 설계된 '뉴앙스'의 결과다."*  
+> — White Pupa, Pink Larva Collection
 
 이 프로젝트는 단순한 패턴 카탈로그를 넘어, 플라이 타잉의 본질적인 철학과 사고방식을 담고자 합니다. 각 패턴과 기법 문서는 "왜 이렇게 묶는가?"에 대한 깊이 있는 이해를 바탕으로 작성되었습니다.
 
