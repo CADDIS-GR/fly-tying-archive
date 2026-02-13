@@ -52,13 +52,15 @@
       width: 160px;
       height: 160px;
       border-radius: 1rem;
-      background: rgba(255,255,255,0.05);
-      border: 2px solid rgba(255,255,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.2);
       flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .fly-image-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .hero-info { flex: 1; min-width: 200px; }
@@ -333,7 +335,7 @@
     <!-- Hero Card -->
     <div class="hero-card">
       <div class="hero-header">
-        <div class="fly-image-placeholder">🦟</div>
+        <div class="fly-image-placeholder"><img src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/ZebraMidge-01.jpg" alt="Zebra Midge"></div>
         <div class="hero-info">
           <span class="category-badge">Nymph · Midge</span>
           <h1 class="hero-title">Zebra Midge</h1>
