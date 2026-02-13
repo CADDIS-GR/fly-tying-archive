@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플라이 타이닝 마스터 클래스: Air Bubble & Hot Spot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; transition: background-color 0.5s ease, color 0.5s ease; }
+        
+        /* UV 모드 전용 스타일 */
+        .uv-mode { background-color: #1a1a2e; color: #e0e0e0; }
+        .uv-mode .uv-text-green { color: #39FF14; text-shadow: 0 0 10px #39FF14; }
+        .uv-mode .uv-text-white { color: #ffffff; text-shadow: 0 0 15px #00ffff; }
+        .uv-mode .card { background-color: #16213e; border-color: #39FF14; }
+        
+        /* 기포 질감 시뮬레이션 */
+        .bubble-texture {
+            background-color: #e0f2fe;
+            background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8) 10%, transparent 10%),
+                              radial-gradient(circle at 20% 30%, rgba(255,255,255,0.8) 5%, transparent 5%);
+            background-size: 10px 10px;
+            box-shadow: inset 0 0 10px rgba(0,166,255,0.2);
+        }
+        
+        /* 차트 컨테이너 제약 */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        /* UV 토글 스위치 */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #39FF14;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #39FF14;
+        }
+        
+        /* 애니메이션 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+
+        /* ===========================
+           패턴 갤러리 스타일
+        =========================== */
+        .pattern-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* 갤러리 카드 */
+        .gallery-card {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            cursor: zoom-in;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease, border-color 0.3s ease;
+            aspect-ratio: 1 / 1;
+        }
+        .gallery-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #38bdf8;
+        }
+
+        /* UV 모드에서 카드 효과 */
+        .uv-mode .gallery-card {
+            border-color: #1e3a4a;
+            background: #0f172a;
+        }
+        .uv-mode .gallery-card:hover {
+            border-color: #39FF14;
+            box-shadow: 0 0 30px rgba(57,255,20,0.3);
+        }
+
+        /* 이미지 줌 효과 */
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(.25,.46,.45,.94);
+            display: block;
+        }
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* 카드 오버레이 */
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1rem;
+        }
+        .gallery-card:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay-title {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.3;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        .gallery-overlay-badge {
+            display: inline-block;
+            margin-top: 0.3rem;
+            background: rgba(56,189,248,0.85);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+        }
+        /* UV 모드 오버레이 색상 */
+        .uv-mode .gallery-overlay-badge {
+            background: rgba(57,255,20,0.85);
+            color: #0f172a;
+        }
+
+        /* 확대 아이콘 */
+        .gallery-zoom-icon {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.7);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.34,1.56,.64,1);
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .gallery-card:hover .gallery-zoom-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ===========================
+           Lightbox 스타일
+        =========================== */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(5, 10, 20, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            align-items: center;
+            justify-content: center;
+            animation: lbFadeIn 0.25s ease;
+        }
+        #lightbox.active { display: flex; }
+        @keyframes lbFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        #lightbox-inner {
+            position: relative;
+            max-width: 90vw;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: lbSlideUp 0.3s cubic-bezier(.34,1.56,.64,1);
+        }
+        @keyframes lbSlideUp {
+            from { transform: translateY(24px) scale(0.96); opacity:0; }
+            to   { transform: translateY(0) scale(1); opacity:1; }
+        }
+
+        #lightbox-img {
+            max-width: 80vw;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            display: block;
+        }
+
+        #lightbox-caption {
+            margin-top: 1rem;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+        #lightbox-sub {
+            margin-top: 0.25rem;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        #lightbox-close {
+            position: absolute;
+            top: -2.5rem;
+            right: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+        }
+        #lightbox-close:hover {
+            background: rgba(239,68,68,0.6);
+            transform: rotate(90deg);
+        }
+
+        /* 네비게이션 버튼 */
+        .lb-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 10;
+        }
+        #lb-prev { left: -3.5rem; }
+        #lb-next { right: -3.5rem; }
+        .lb-nav-btn:hover {
+            background: rgba(56,189,248,0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* UV 모드 lightbox */
+        .uv-mode #lightbox { background: rgba(0,5,20,0.95); }
+        .uv-mode #lightbox-caption { color: #39FF14; text-shadow: 0 0 12px #39FF14; }
+
+        /* 섹션 제목 구분선 효과 */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .section-divider::before, .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #cbd5e1);
+        }
+        .section-divider::after {
+            background: linear-gradient(to left, transparent, #cbd5e1);
+        }
+
+        @media (max-width: 640px) {
+            .pattern-gallery { grid-template-columns: 1fr; }
+            #lb-prev { left: -2.5rem; }
+            #lb-next { right: -2.5rem; }
+            #lightbox-img { max-width: 92vw; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 transition-colors duration-500" id="appBody">
+
+    <!-- 네비게이션 -->
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-slate-200" id="navBar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-black tracking-tighter text-slate-900" id="logoText">FLY LAB</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm font-bold text-slate-500" id="uvLabel">UV LAMP</span>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="uvToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-slate-300 transition-all duration-300 ease-in-out"/>
+                        <label for="uvToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 cursor-pointer transition-colors duration-300"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <header class="relative overflow-hidden pt-16 pb-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight">
+                <span class="block">Air Bubble &</span>
+                <span class="block text-emerald-500 transition-colors duration-300" id="heroAccent">Hot Spot</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600" id="heroDesc">
+                관리형 저수지 송어를 유혹하는 가장 짧고 강력한 공식.<br>
+                생물학적 모방과 시각적 자극의 완벽한 조화를 경험하세요.
+            </p>
+        </div>
+    </header>
+
+    <!-- 섹션 1: 개념 설명 -->
+    <section id="concepts" class="py-12 bg-white transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Air Bubble Card -->
+                <div class="card p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all duration-300 cursor-pointer group" onclick="toggleDetails('bubbleDetails')">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-2xl animate-float">🫧</div>
+                        <span class="text-sm font-bold text-blue-500 uppercase tracking-wide">Biology</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">1. Air Bubble (기포)</h3>
+                    <p class="text-slate-600 mb-4">"살아있는 먹이"라는 가장 확실한 신호.</p>
+                    <div id="bubbleDetails" class="hidden text-slate-600 text-sm bg-white p-4 rounded-lg shadow-inner border border-slate-100 mt-4">
+                        <ul class="space-y-2">
+                            <li><strong>🔬 생물학적 의미:</strong> 우화를 위해 수면으로 상승하는 수중 생명체가 머금은 가스 방울을 모방하여 생동감을 부여합니다.</li>
+                            <li><strong>✨ 시각적 효과:</strong> 돌기들이 빛을 난반사시켜 실제 기포와 같은 반짝임을 만듭니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Hot Spot Card -->
+                <div class="card p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all duration-300 cursor-pointer group" onclick="toggleDetails('hotspotDetails')">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-2xl animate-pulse">🎯</div>
+                        <span class="text-sm font-bold text-green-500 uppercase tracking-wide">Trigger</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 group-hover:text-green-600 transition-colors">2. Hot Spot (핫스팟)</h3>
+                    <p class="text-slate-600 mb-4">공격 본능을 깨우는 명확한 시각적 타겟.</p>
+                    <div id="hotspotDetails" class="hidden text-slate-600 text-sm bg-white p-4 rounded-lg shadow-inner border border-slate-100 mt-4">
+                        <ul class="space-y-2">
+                            <li><strong>🔦 기능적 의미:</strong> 탁한 물색이나 깊은 수심에서 플라이의 위치를 노출시킵니다.</li>
+                            <li><strong>☢️ UV 효과:</strong> 네온 컬러 도료는 UV 조사 시 폭발적인 발광으로 공격을 유도합니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션 2: 시뮬레이터 실험실 -->
+    <section id="lab" class="py-20 bg-slate-50 transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Interactive Simulator</span>
+                <h2 class="text-3xl font-bold mb-4">플라이 시너지 연구소</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto" id="labDesc">
+                    재료 조합에 따라 달라지는 성능 지표를 실험해보세요.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-start">
+                <!-- 컨트롤 패널 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 lg:col-span-1 card shadow-sm">
+                    <h3 class="text-lg font-bold mb-6 border-b pb-2 border-slate-100">재료 선택</h3>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold text-slate-700 mb-2">바디 재료</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="setBody('standard')" id="btnBodyStd" class="p-3 text-sm rounded-lg border-2 border-slate-200 hover:border-slate-400 font-medium transition-all text-center">일반 실</button>
+                            <button onclick="setBody('bubble')" id="btnBodyBub" class="p-3 text-sm rounded-lg border-2 border-blue-400 bg-blue-50 text-blue-700 font-bold transition-all text-center">버블 닷</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold text-slate-700 mb-2">헤드/핫스팟 (UV 물감)</label>
+                        <div class="space-y-2">
+                            <button onclick="setHead('none')" id="btnHeadNone" class="w-full p-3 text-sm rounded-lg border-2 border-slate-200 hover:border-slate-400 font-medium transition-all text-left flex items-center">
+                                <span class="w-4 h-4 rounded-full bg-slate-300 mr-3"></span> 없음
+                            </button>
+                            <button onclick="setHead('green')" id="btnHeadGreen" class="w-full p-3 text-sm rounded-lg border-2 border-green-200 hover:border-green-400 font-medium transition-all text-left flex items-center">
+                                <span class="w-4 h-4 rounded-full bg-[#39FF14] mr-3 border border-slate-200 shadow-[0_0_5px_#39FF14]"></span> 네온 그린
+                            </button>
+                            <button onclick="setHead('white')" id="btnHeadWhite" class="w-full p-3 text-sm rounded-lg border-2 border-blue-100 hover:border-blue-300 font-medium transition-all text-left flex items-center">
+                                <span class="w-4 h-4 rounded-full bg-white mr-3 border border-slate-200 shadow-[0_0_5px_cyan]"></span> 네온 화이트
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 시각화 영역 -->
+                <div class="lg:col-span-2 grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center min-h-[350px] relative overflow-hidden card transition-colors duration-500" id="previewContainer">
+                        <div class="absolute top-4 left-4 text-xs font-bold uppercase text-slate-400 tracking-widest">Visual Preview</div>
+                        <div class="relative w-64 h-32 transform transition-all duration-500 hover:scale-105">
+                            <!-- Hook -->
+                            <div class="absolute top-1/2 left-0 w-48 h-24 border-b-4 border-r-4 border-slate-400 rounded-br-[4rem]" style="border-radius: 0 0 50px 0;"></div>
+                            
+                            <!-- Body -->
+                            <div id="flyBody" class="absolute top-[45%] left-4 w-36 h-6 rounded-full transition-all duration-500 origin-left" style="background: #94a3b8;"></div>
+                            
+                            <!-- Head -->
+                            <div id="flyHead" class="absolute top-[40%] left-[8.5rem] w-8 h-8 rounded-full transition-all duration-500 z-10 shadow-sm" style="background: transparent;"></div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 card">
+                        <div class="chart-container">
+                            <canvas id="statsChart"></canvas>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span class="text-2xl font-bold" id="scoreDisplay">0</span>
+                            <span class="text-xs uppercase text-slate-400 block">Total Appeal Score</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         섹션 3: 패턴 예시 갤러리 (신규)
+    =========================== -->
+    <section id="gallery" class="py-20 bg-white transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-12">
+                <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Pattern Examples</span>
+                <h2 class="text-3xl font-bold mb-3">실제 패턴 아카이브</h2>
+                <p class="text-base text-slate-500 max-w-xl mx-auto">
+                    클릭하면 확대 이미지를 볼 수 있습니다.
+                </p>
+            </div>
+
+            <div class="pattern-gallery">
+                <!-- 카드 1: OilPupa -->
+                <div class="gallery-card" onclick="openLightbox(0)" title="OilPupa 확대보기">
+                    <img
+                        src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/OilPupa.jpg"
+                        alt="OilPupa 패턴"
+                        loading="lazy"
+                        onerror="this.parentElement.querySelector('.gallery-fallback').style.display='flex'; this.style.display='none';"
+                    >
+                    <!-- 이미지 로드 실패 시 폴백 -->
+                    <div class="gallery-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; background:#f1f5f9; color:#94a3b8;">
+                        <span style="font-size:2.5rem;">🪰</span>
+                        <span style="font-size:0.75rem; margin-top:0.5rem;">OilPupa</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-title">Oil Pupa</div>
+                        <span class="gallery-overlay-badge">Air Bubble</span>
+                    </div>
+                    <div class="gallery-zoom-icon">🔍</div>
+                </div>
+
+                <!-- 카드 2: LeechDot -->
+                <div class="gallery-card" onclick="openLightbox(1)" title="LeechDot 확대보기">
+                    <img
+                        src="https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/LeechDot.jpg"
+                        alt="LeechDot 패턴"
+                        loading="lazy"
+                        onerror="this.parentElement.querySelector('.gallery-fallback').style.display='flex'; this.style.display='none';"
+                    >
+                    <div class="gallery-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; background:#f1f5f9; color:#94a3b8;">
+                        <span style="font-size:2.5rem;">🪰</span>
+                        <span style="font-size:0.75rem; margin-top:0.5rem;">LeechDot</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-title">Leech Dot</div>
+                        <span class="gallery-overlay-badge">Hot Spot</span>
+                    </div>
+                    <div class="gallery-zoom-icon">🔍</div>
+                </div>
+
+                <!-- 카드 3: RedDotLarva -->
+                <div class="gallery-card" onclick="openLightbox(2)" title="RedDotLarva 확대보기">
+                    <img
+                        src="https://raw.githubusercontent.com/CADDIS-GR/tying-recipe/main/photos/RedDotLarva.jpg"
+                        alt="RedDotLarva 패턴"
+                        loading="lazy"
+                        onerror="this.parentElement.querySelector('.gallery-fallback').style.display='flex'; this.style.display='none';"
+                    >
+                    <div class="gallery-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; background:#f1f5f9; color:#94a3b8;">
+                        <span style="font-size:2.5rem;">🪰</span>
+                        <span style="font-size:0.75rem; margin-top:0.5rem;">RedDotLarva</span>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-title">Red Dot Larva</div>
+                        <span class="gallery-overlay-badge">Air Bubble + Hot Spot</span>
+                    </div>
+                    <div class="gallery-zoom-icon">🔍</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===========================
+         Lightbox 오버레이 (신규)
+    =========================== -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대보기">
+        <div id="lightbox-inner">
+            <!-- 닫기 버튼 -->
+            <button id="lightbox-close" onclick="closeLightbox()" aria-label="닫기">✕</button>
+
+            <!-- 이전/다음 버튼 -->
+            <button class="lb-nav-btn" id="lb-prev" onclick="lbNavigate(-1)" aria-label="이전 이미지">‹</button>
+            <button class="lb-nav-btn" id="lb-next" onclick="lbNavigate(1)" aria-label="다음 이미지">›</button>
+
+            <!-- 확대 이미지 -->
+            <img id="lightbox-img" src="" alt="">
+
+            <!-- 캡션 -->
+            <div id="lightbox-caption"></div>
+            <div id="lightbox-sub"></div>
+        </div>
+    </div>
+
+    <!-- 섹션 4: 재료 비교 -->
+    <section class="py-20 bg-slate-50 transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="border border-slate-200 rounded-xl p-6 card">
+                    <h3 class="text-xl font-bold text-purple-600 mb-2">① Solarez Color UV Resin</h3>
+                    <p class="text-sm text-slate-500 mb-4">코팅과 발색을 동시에 수행하는 헤드 시멘트 대용.</p>
+                    <ul class="text-sm space-y-2 text-slate-700">
+                        <li>• 투명 레진의 강도 + 안료의 선명한 발색</li>
+                        <li>• 어두운 수심에서도 유지되는 강력한 시인성</li>
+                        <li>• 빠른 경화로 작업 시간 단축</li>
+                    </ul>
+                </div>
+                <div class="border border-slate-200 rounded-xl p-6 card">
+                    <h3 class="text-xl font-bold text-emerald-600 mb-2">② UV 물감 (Neon Series)</h3>
+                    <p class="text-sm text-slate-500 mb-4">형광 도료가 포함되어 자외선에 즉각 반응하는 특수 물감.</p>
+                    <ul class="text-sm space-y-2 text-slate-700">
+                        <li>• <strong>Neon-63(Green), Neon-11(White)</strong> 등 필승 컬러</li>
+                        <li>• 기포와 알의 질감을 사실적으로 표현</li>
+                        <li>• 일반 조명 아래와 UV 아래에서의 극명한 반전</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-slate-900 text-slate-300 py-12 transition-colors duration-500" id="footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold text-white mb-2 italic text-emerald-400">"Air Bubble로 생명력을, Hot Spot으로 종지부를."</h2>
+            <div class="text-xs text-slate-500 mt-8">Generated by Jeff for 낚시대장.</div>
+        </div>
+    </footer>
+
+    <script>
+        // =============================
+        //  갤러리 & Lightbox 데이터
+        // =============================
+        const galleryItems = [
+            {
+                src: 'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/OilPupa.jpg',
+                title: 'Oil Pupa',
+                badge: 'Air Bubble'
+            },
+            {
+                src: 'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/LeechDot.jpg',
+                title: 'Leech Dot',
+                badge: 'Hot Spot'
+            },
+            {
+                src: 'https://raw.githubusercontent.com/CADDIS-GR/tying-recipe/main/photos/RedDotLarva.jpg',
+                title: 'Red Dot Larva',
+                badge: 'Air Bubble + Hot Spot'
+            }
+        ];
+
+        let currentLbIndex = 0;
+
+        function openLightbox(idx) {
+            currentLbIndex = idx;
+            renderLightbox();
+            const lb = document.getElementById('lightbox');
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function renderLightbox() {
+            const item = galleryItems[currentLbIndex];
+            const img = document.getElementById('lightbox-img');
+            img.src = item.src;
+            img.alt = item.title;
+            document.getElementById('lightbox-caption').textContent = item.title;
+            document.getElementById('lightbox-sub').textContent = item.badge;
+
+            // 내비 버튼 표시/숨김
+            document.getElementById('lb-prev').style.opacity = currentLbIndex > 0 ? '1' : '0.2';
+            document.getElementById('lb-next').style.opacity = currentLbIndex < galleryItems.length - 1 ? '1' : '0.2';
+            document.getElementById('lb-prev').disabled = currentLbIndex === 0;
+            document.getElementById('lb-next').disabled = currentLbIndex === galleryItems.length - 1;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function lbNavigate(dir) {
+            const next = currentLbIndex + dir;
+            if (next < 0 || next >= galleryItems.length) return;
+            currentLbIndex = next;
+
+            // 슬라이드 애니메이션
+            const inner = document.getElementById('lightbox-inner');
+            inner.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+            inner.style.opacity = '0';
+            inner.style.transform = `translateX(${dir * 30}px)`;
+            setTimeout(() => {
+                renderLightbox();
+                inner.style.transform = `translateX(${-dir * 20}px)`;
+                setTimeout(() => {
+                    inner.style.transition = 'transform 0.25s cubic-bezier(.34,1.56,.64,1), opacity 0.25s ease';
+                    inner.style.opacity = '1';
+                    inner.style.transform = 'translateX(0)';
+                }, 30);
+            }, 180);
+        }
+
+        // 배경 클릭 닫기
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // 키보드 지원
+        document.addEventListener('keydown', function(e) {
+            const lb = document.getElementById('lightbox');
+            if (!lb.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft')  lbNavigate(-1);
+            if (e.key === 'ArrowRight') lbNavigate(1);
+        });
+
+
+        // =============================
+        //  기존 시뮬레이터 로직
+        // =============================
+        const state = { body: 'bubble', head: 'none', uvMode: false };
+        const flyStats = {
+            standard: { realism: 30, trigger: 20, visibility: 30 },
+            bubble:   { realism: 90, trigger: 50, visibility: 60 },
+            headNone:  { realism: 0, trigger: 0, visibility: 0 },
+            headGreen: { realism: 10, trigger: 90, visibility: 95 },
+            headWhite: { realism: 20, trigger: 80, visibility: 90 }
+        };
+
+        let radarChart;
+
+        function initChart() {
+            const ctx = document.getElementById('statsChart').getContext('2d');
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['생명력', '공격 본능', '시인성'],
+                    datasets: [{
+                        label: '지표',
+                        data: [0, 0, 0],
+                        backgroundColor: 'rgba(56, 189, 248, 0.2)',
+                        borderColor: 'rgba(56, 189, 248, 1)',
+                        pointBackgroundColor: 'rgba(56, 189, 248, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                        r: {
+                            suggestedMin: 0, suggestedMax: 100,
+                            ticks: { display: false },
+                            pointLabels: { font: { weight: 'bold', family: "'Noto Sans KR', sans-serif" } }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function toggleDetails(id) {
+            document.getElementById(id).classList.toggle('hidden');
+        }
+
+        function setBody(type) {
+            state.body = type;
+            document.getElementById('btnBodyStd').className = `p-3 text-sm rounded-lg border-2 transition-all text-center ${type === 'standard' ? 'border-blue-400 bg-blue-50 text-blue-700 font-bold' : 'border-slate-200'}`;
+            document.getElementById('btnBodyBub').className = `p-3 text-sm rounded-lg border-2 transition-all text-center ${type === 'bubble'   ? 'border-blue-400 bg-blue-50 text-blue-700 font-bold' : 'border-slate-200'}`;
+            updateVisuals();
+        }
+
+        function setHead(color) {
+            state.head = color;
+            const base = "w-full p-3 text-sm rounded-lg border-2 transition-all text-left flex items-center";
+            document.getElementById('btnHeadNone').className  = `${base} ${color === 'none'  ? 'border-blue-400 bg-blue-50'   : 'border-slate-200'}`;
+            document.getElementById('btnHeadGreen').className = `${base} ${color === 'green' ? 'border-green-400 bg-green-50' : 'border-green-100'}`;
+            document.getElementById('btnHeadWhite').className = `${base} ${color === 'white' ? 'border-blue-300 bg-blue-50'   : 'border-blue-100'}`;
+            updateVisuals();
+        }
+
+        function toggleUVMode() {
+            state.uvMode = document.getElementById('uvToggle').checked;
+            const body = document.getElementById('appBody');
+            if (state.uvMode) {
+                body.classList.add('uv-mode');
+                radarChart.data.datasets[0].borderColor = '#39FF14';
+                radarChart.data.datasets[0].backgroundColor = 'rgba(57, 255, 20, 0.2)';
+            } else {
+                body.classList.remove('uv-mode');
+                radarChart.data.datasets[0].borderColor = 'rgba(56, 189, 248, 1)';
+                radarChart.data.datasets[0].backgroundColor = 'rgba(56, 189, 248, 0.2)';
+            }
+            radarChart.update();
+            updateVisuals();
+        }
+
+        function updateVisuals() {
+            const b = state.body === 'bubble' ? flyStats.bubble : flyStats.standard;
+            const h = state.head === 'green' ? flyStats.headGreen
+                    : state.head === 'white' ? flyStats.headWhite
+                    : flyStats.headNone;
+            const r = Math.min(100, b.realism    + h.realism);
+            const t = Math.min(100, b.trigger    + h.trigger);
+            const v = Math.min(100, b.visibility + h.visibility);
+            radarChart.data.datasets[0].data = [r, t, v];
+            radarChart.update();
+            animateValue(
+                document.getElementById('scoreDisplay'),
+                parseInt(document.getElementById('scoreDisplay').innerText),
+                Math.floor((r + t + v) / 3),
+                500
+            );
+
+            const flyBody = document.getElementById('flyBody');
+            const flyHead = document.getElementById('flyHead');
+            if (state.body === 'bubble') {
+                flyBody.className = "absolute top-[45%] left-4 w-36 h-6 rounded-full transition-all duration-500 origin-left bubble-texture";
+                flyBody.style.filter = state.uvMode ? "brightness(1.5)" : "none";
+            } else {
+                flyBody.className = "absolute top-[45%] left-4 w-36 h-4 rounded-full transition-all duration-500 origin-left bg-slate-400";
+                flyBody.style.filter = "none";
+            }
+
+            if (state.head === 'none') {
+                flyHead.style.background = "transparent";
+                flyHead.style.boxShadow = "none";
+            } else if (state.head === 'green') {
+                flyHead.style.background = state.uvMode ? "#39FF14" : "#22c55e";
+                flyHead.style.boxShadow  = state.uvMode ? "0 0 20px #39FF14" : "none";
+            } else {
+                flyHead.style.background = state.uvMode ? "#ffffff" : "#f1f5f9";
+                flyHead.style.boxShadow  = state.uvMode ? "0 0 20px cyan" : "none";
+            }
+        }
+
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        window.addEventListener('load', () => {
+            initChart();
+            setBody('bubble');
+            setHead('none');
+            document.getElementById('uvToggle').addEventListener('change', toggleUVMode);
+        });
+    </script>
+</body>
+</html>
