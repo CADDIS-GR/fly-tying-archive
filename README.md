@@ -1,8 +1,8 @@
 # 🎣 Fly Tying Archive
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success)](https://caddis-gr.github.io/fly-tying-archive/)
-[![Contents](https://img.shields.io/badge/Contents-10-blue)]()
-[![Categories](https://img.shields.io/badge/Categories-4-purple)]()
+[![Contents](https://img.shields.io/badge/Contents-12-blue)]()
+[![Categories](https://img.shields.io/badge/Categories-5-purple)]()
 
 관리형 낚시터(저수지) 플라이 낚시를 위한 타잉 패턴 및 철학 아카이브입니다.
 
@@ -12,7 +12,7 @@
 
 **🔗 라이브 사이트:** [https://caddis-gr.github.io/fly-tying-archive/](https://caddis-gr.github.io/fly-tying-archive/)
 
-## 📚 등록된 콘텐츠 (10개)
+## 📚 등록된 콘텐츠 (12개)
 
 ### 🦟 Chironomid (2개)
 
@@ -48,9 +48,18 @@
 - **특징:** 빠른 침강 + 은밀한 실루엣, Light Blue 버블 트리거
 - **시즌:** Nov-Mar 동절기 특화
 
-### 🔬 Technique (2개)
+### 🪝 Nymph (1개) ⭐ NEW!
 
-#### 7. State Over Organ - 하얀 점의 철학
+#### 7. Zebra Midge
+- **Hook:** #16~#20+
+- **특징:** 미지 퓨파를 모방한 리얼리스틱 님프. 연중 사용 가능.
+- **컬러:** Black/Silver (클래식), Red/Black (고대비), Olive/Copper (변화구)
+- **리그:** Double Nymph Rig / Dry-Dropper Rig
+- **Source:** Ventures Fly Co. Cheat Sheet V1.0
+
+### 🔬 Technique (3개)
+
+#### 8. State Over Organ - 하얀 점의 철학
 > *"플라이 타잉은 기관을 재현하는 게 아니라, 송어가 인식하는 '상태'를 재현하는 작업입니다."*
 
 - **주제:** Chironomid Pupa의 핵심 트리거 분석
@@ -61,87 +70,42 @@
   - **흰색 비드 (Bead)** - 단단한 가스 버블 재현
   - **흰색 얀 (Yarn)** - 생생한 아가미 재현
   - **Glo-Brite White(16)** - UV 신호 극대화
-- **상황별 가이드:**
-  - 신호 특성 (점 vs 면)
-  - 성향 (어트랙터 ↔ 내추럴)
-  - 거리 (근거리 vs 중·원거리)
-  - 수질 조건 (맑은 물 vs 탁수)
-- **특징:** 
-  - 프리미엄 히어로 디자인 (배경 이미지 + 다크 오버레이)
-  - 세련된 매거진 스타일 타이포그래피
-  - 이미지 확대(줌) 기능
-  - 비교 테이블 (Bead vs Yarn)
-  - 철학 섹션 (Quote 스타일)
 
-#### 8. 낚시대장의 플라이 컬러 전략 가이드 ⭐ NEW!
+#### 9. 낚시대장의 플라이 컬러 전략 가이드
 > *"송어에게 보여지는 색(시인성)이어야 하고, 송어가 좋아하는 색(선호도)이어야 한다!"*
 
 - **버전:** V3.1 철학 에디션
 - **기본 베이스:** Veevus Body Quill BQ1(Black)
-- **핵심 개념:**
-  - **시인성 (Visibility)** - 보여야 먹는다
-    - 환경 요인: 광량, 물색, 수심
-    - 전략 요소: 대비, 반사, 형광
-  - **선호도 (Preference)** - 좋아해야 입을 연다
-    - 심리 요인: 먹잇감 모방, 호기심, 공격 본능
-    - 전략 요소: 내추럴 톤, 징검다리 색상, 톤다운
 - **전략적 색상 분류:**
   1. **무채색 그룹 (Neutral)** - 극강의 시인성
-     - Black, White, Gunmetal
   2. **유채색 그룹 (Attractor)** - 본능적 선호도
-     - Pink, Chartreuse, Orange
   3. **징검다리 그룹 (Stepping Stone)** - 조화의 균형
-     - Purple, Doc Blue
   4. **톤다운 & 구조색 (Advanced)** - 성숙한 선호도
-     - Wine, Peacock Green
-- **상황별 선택 기준:**
-  - 해가 쨍하고 물이 맑을 때
-  - 흐린 날 / 비 오는 날
-  - 물이 탁할 때
-  - 해질녘 / 이른 아침
-  - 입질이 극도로 예민할 때
-  - 저수온기 / 딥존 (Deep Zone)
-- **특징:**
-  - 4컷 인포그래픽 디자인
-  - 다크/라이트 테마 토글
-  - Editorial 매거진 스타일
-  - 실제 플라이 타이잉 색상칩 시각화
-  - 상황별 최적 색상 가이드
+- **특징:** 4컷 인포그래픽, 다크/라이트 테마 토글, Editorial 매거진 스타일
+
+#### 10. Air Bubble & Hot Spot 마스터클래스 ⭐ NEW!
+> *"생명력은 빛에서 온다. Bubble이 숨을 불어넣고, Hot Spot이 방아쇠를 당긴다."*
+
+- **주제:** 관리형 저수지 송어를 유혹하는 핵심 공식
+- **핵심 개념:**
+  - **Bubble Dot** - 공기방울 생명력 모방
+  - **UV Neon Hot Spot** - 공격 트리거
+- **특징:** 인터랙티브 재료 조합 시뮬레이터
 
 ### 📚 Collection (2개)
 
-#### 9. Blue Collection - Quiet Signal
-> *"블루는 늘 마지막에 고려되고, 하지만 한 번 선택되면 쉽게 빠지지 않는다.  
-> 과하지 않기 때문에 오래 쓰이고, 말이 없기 때문에 기억에 남는다."*
+#### 11. Blue Collection - Quiet Signal
+> *"블루는 늘 마지막에 고려되고, 하지만 한 번 선택되면 쉽게 빠지지 않는다."*
 
 - **테마:** 조용한 신호 - 블루 컬러 스토리
-- **포함 패턴:** 4개
-  1. **Blue Pheasant Tail** (#16)
-  2. **Blue Pupa** (#14)
-  3. **Blue Spider** (#12)
-  4. **Blue Collar Worker** (#14)
-- **철학:**
-  - 물속에서 가장 오래 남는 색
-  - 과장되지 않은 신호
-  - 브라운 계열과의 완벽한 조화
-- **특징:**
-  - 푸른빛 도는 밝은 배경 디자인
-  - 이미지 줌 모달 기능
+- **포함 패턴:** Blue Pheasant Tail / Blue Pupa / Blue Spider / Blue Collar Worker
 
-#### 10. White Pupa, Pink Larva Collection
+#### 12. White Pupa, Pink Larva Collection
 > *"입질은 우연이 아니라, 완벽하게 설계된 '뉴앙스'의 결과다."*
 
 - **테마:** 프리미엄 동절기 3종 세트
-- **포함 패턴:** 3개
-  1. **Pink Larva 3D** (#14)
-  2. **Pink Larva 2D** (#14)
-  3. **White Pupa** (#14)
-- **핵심 기법:**
-  - **Bubble Dot** - 공기방울 재현
-  - **Thin UV Resin + Vanish Coat**
-- **특징:**
-  - 프리미엄 퍼플 그라디언트 디자인
-  - Bubble Dot 핵심 기법 하이라이트
+- **포함 패턴:** Pink Larva 3D / Pink Larva 2D / White Pupa
+- **핵심 기법:** Bubble Dot, Thin UV Resin + Vanish Coat
 
 ## ✨ 주요 기능
 
@@ -152,41 +116,12 @@
 - 📊 **통계 대시보드** - 패턴 수, 카테고리 수 실시간 표시
 - 🎨 **모던 UI** - 보라색 그라디언트 + Glassmorphism
 
-### 낚시대장의 플라이 컬러 전략 가이드 페이지 ⭐ NEW!
-- 🎨 **4컷 인포그래픽 레이아웃**
-  - Card 1: 타이틀 & 철학
-  - Card 2: 대원칙 (시인성 vs 선호도)
-  - Card 3: 전략적 색상 분류 (4개 그룹)
-  - Card 4: 상황별 선택 기준
-- 🌓 **다크/라이트 테마 토글**
-  - 우측 상단 테마 전환 버튼
-  - localStorage 저장 (새로고침 시 유지)
-  - 부드러운 전환 애니메이션
-- 🎨 **실제 색상칩 시각화**
-  - 각 색상 그룹별 컬러칩 표시
-  - Wine, Peacock Green 등 실제 플라이 색상
-- 📋 **상황별 가이드**
-  - 6가지 상황 (날씨, 물색, 시간대, 수심 등)
-  - 각 상황별 최적 색상 조합
-- 💡 **최종 조언 섹션**
-  - BQ1(Black) 베이스 전략
-  - 시인성과 선호도의 균형
-
 ## 🛠️ 기술 스택
 
 - **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Fonts:** 
-  - Playfair Display (세리프 제목)
-  - Noto Sans KR (한글)
-  - Crimson Pro (인용문)
-  - System fonts
+- **Fonts:** Playfair Display, Noto Sans KR, Crimson Pro, System fonts
 - **Hosting:** GitHub Pages
-- **Design:** 
-  - Glassmorphism (메인 페이지)
-  - Hero Section (기법 페이지)
-  - Magazine Style Typography
-  - Dark/Light Theme Toggle (색상 가이드)
-  - Editorial Infographic (색상 가이드)
+- **Design:** Glassmorphism, Hero Section, Magazine Style Typography, Dark/Light Theme Toggle
 
 ## 📂 프로젝트 구조
 
@@ -194,48 +129,58 @@
 fly-tying-archive/
 ├── index.html
 ├── README.md
+├── docs/
+│   └── air-bubble-hotspot.html      # Air Bubble & Hot Spot 마스터클래스
 ├── flies/
 │   ├── chironomid/
 │   ├── streamer/
+│   ├── nymph/
+│   │   └── zebra-midge/             # ⭐ NEW!
+│   │       ├── index.html
+│   │       └── Cheat_Sheet__Zebra_Midge__V1_0.pdf
 │   ├── blue-collection/
 │   └── tech/
 │       ├── white-dot-philosophy/
-│       └── color-strategy/          # ⭐ NEW! 색상 전략 가이드
-│           └── index.html
+│       └── color-strategy/
 └── images/
-    ├── BackImage.jpg                # 색상 가이드 썸네일
+    ├── ZebraMidge-01.jpg            # ⭐ NEW!
     └── ...
 ```
 
 ## 📅 업데이트 로그
 
-### 2025-02-05 ⭐ 색상 전략 가이드 추가
+### 2026-02-13 ⭐ Nymph 카테고리 신설 + 2개 콘텐츠 추가
+- 🪝 **Zebra Midge 추가** (Nymph 카테고리 신설)
+  - 미지 퓨파 모방 리얼리스틱 님프
+  - Black/Silver · Red/Black · Olive/Copper 3컬러 전략
+  - Double Nymph / Dry-Dropper 리그 가이드
+  - 관리형 저수지 적용 팁 포함
+  - 원본 PDF (Ventures Fly Co. Cheat Sheet V1.0) 링크
+- 🔬 **Air Bubble & Hot Spot 마스터클래스 추가**
+  - Bubble Dot 생명력 모방 + UV Neon Hot Spot 공격 트리거
+  - 인터랙티브 재료 조합 시뮬레이터
+- 📊 **통계 업데이트**
+  - 총 콘텐츠: 12개
+  - 카테고리: 5개 (Chironomid, Nymph, Streamer, Technique, Collection)
+
+### 2026-02-05 ⭐ 색상 전략 가이드 추가
 - 🎨 **낚시대장의 플라이 컬러 전략 가이드 V3.1 추가**
   - 시인성과 선호도의 균형 철학
-  - 4컷 인포그래픽 디자인
+  - 4컷 인포그래픽, 다크/라이트 테마 토글
   - 전략적 색상 분류 (무채색, 유채색, 징검다리, 톤다운)
-  - 상황별 최적 색상 선택 가이드
-  - 다크/라이트 테마 토글 기능
-  - Editorial 매거진 스타일
-  - BackImage.jpg 썸네일 적용
-- 📊 **통계 업데이트**
-  - 총 콘텐츠: 10개 (패턴 6 + 기법 2 + 컬렉션 2)
-  - 카테고리: 4개 (Chironomid, Streamer, Technique, Collection)
 
-### 2025-01-30
+### 2026-01-30
 - 📚 **White Pupa, Pink Larva Collection 추가**
-  - 프리미엄 동절기 3종 세트
-  - Bubble Dot 핵심 기법 하이라이트
 
-### 2025-01-24
+### 2026-01-24
 - 📚 **Collection 카테고리 신설**
 - 🎨 **Blue Collection - Quiet Signal 추가**
 
-### 2025-01-29
+### 2026-01-29
 - 🔬 **Technique 카테고리 신설**
 - 🎨 **State Over Organ 기법 페이지 추가**
 
-### 2025-01-23
+### 2026-01-20
 - 🎉 프로젝트 시작
 - 6개 패턴 등록 (Chironomid 2개, Streamer 4개)
 
@@ -258,7 +203,7 @@ fly-tying-archive/
 
 <div align="center">
 
-**Made with ❤️ by 낚시대장 | 2025 Season**
+**Made with ❤️ by 낚시대장 | 2026 Season**
 
 *"송어에게 보여지는 색이어야 하고, 송어가 좋아하는 색이어야 한다!"*
 
