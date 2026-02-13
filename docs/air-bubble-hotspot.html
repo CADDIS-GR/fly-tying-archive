@@ -539,28 +539,82 @@
         </div>
     </div>
 
-    <!-- 섹션 4: 재료 비교 -->
+    <!-- 섹션 4: 재료 카드 (이미지 + 링크 포함) -->
     <section class="py-20 bg-slate-50 transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-12">
+                <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Materials</span>
+                <h2 class="text-3xl font-bold mb-3">사용 재료</h2>
+                <p class="text-base text-slate-500 max-w-xl mx-auto">Hot Spot과 Air Bubble을 구현하는 두 가지 핵심 UV 재료.</p>
+            </div>
+
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="border border-slate-200 rounded-xl p-6 card">
-                    <h3 class="text-xl font-bold text-purple-600 mb-2">① Solarez Color UV Resin</h3>
-                    <p class="text-sm text-slate-500 mb-4">코팅과 발색을 동시에 수행하는 헤드 시멘트 대용.</p>
-                    <ul class="text-sm space-y-2 text-slate-700">
-                        <li>• 투명 레진의 강도 + 안료의 선명한 발색</li>
-                        <li>• 어두운 수심에서도 유지되는 강력한 시인성</li>
-                        <li>• 빠른 경화로 작업 시간 단축</li>
-                    </ul>
+
+                <!-- ① Solarez Color UV Resin -->
+                <div class="card border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white">
+                    <div class="relative overflow-hidden bg-slate-100" style="height:220px;">
+                        <img
+                            src="https://raw.githubusercontent.com/CADDIS-GR/tying-recipe/main/photos/UvPaint-02.jpg"
+                            alt="Solarez Fly-Tie Colors"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f3f0ff;color:#7c3aed;font-size:3rem;\'>🧪</div>'"
+                        >
+                        <span class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">UV Resin</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-purple-600 mb-1">① Solarez Fly-Tie Colors</h3>
+                        <p class="text-sm text-slate-500 mb-4">코팅과 발색을 동시에 수행하는 헤드 시멘트 대용.</p>
+                        <ul class="text-sm space-y-2 text-slate-700 mb-5">
+                            <li class="flex items-start gap-2"><span class="text-purple-400 mt-0.5">▸</span> 투명 레진의 강도 + 안료의 선명한 발색</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-400 mt-0.5">▸</span> UV 조사 즉시 경화 — 작업 시간 단축</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-400 mt-0.5">▸</span> Hot Spot / Accent 트리거에 최적화</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-400 mt-0.5">▸</span> High Gloss 마감으로 수중 시인성 극대화</li>
+                        </ul>
+                        <a
+                            href="https://solarez.com/solarez-fly-tie-colors.html"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-600 text-white text-sm font-bold hover:bg-purple-700 transition-colors duration-200"
+                        >
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                            Solarez 제품 페이지
+                        </a>
+                    </div>
                 </div>
-                <div class="border border-slate-200 rounded-xl p-6 card">
-                    <h3 class="text-xl font-bold text-emerald-600 mb-2">② UV 물감 (Neon Series)</h3>
-                    <p class="text-sm text-slate-500 mb-4">형광 도료가 포함되어 자외선에 즉각 반응하는 특수 물감.</p>
-                    <ul class="text-sm space-y-2 text-slate-700">
-                        <li>• <strong>Neon-63(Green), Neon-11(White)</strong> 등 필승 컬러</li>
-                        <li>• 기포와 알의 질감을 사실적으로 표현</li>
-                        <li>• 일반 조명 아래와 UV 아래에서의 극명한 반전</li>
-                    </ul>
+
+                <!-- ② UV 물감 (Neon Series) -->
+                <div class="card border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white">
+                    <div class="relative overflow-hidden bg-slate-100" style="height:220px;">
+                        <img
+                            src="https://raw.githubusercontent.com/CADDIS-GR/tying-recipe/main/photos/UvPaint-01.jpg"
+                            alt="UV 물감 Neon Series"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#ecfdf5;color:#059669;font-size:3rem;\'>🎨</div>'"
+                        >
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">UV Paint</span>
+                        <span class="absolute top-3 right-3 text-xs font-bold px-2 py-1 rounded-full shadow" style="background:#39FF14;color:#0f172a;">☢ UV REACTIVE</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-emerald-600 mb-1">② UV 물감 (Neon Series)</h3>
+                        <p class="text-sm text-slate-500 mb-4">형광 도료가 포함되어 자외선에 즉각 반응하는 특수 물감.</p>
+                        <ul class="text-sm space-y-2 text-slate-700 mb-5">
+                            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">▸</span> <strong>Neon-63 (Green)</strong> — 공격 본능 유발 핵심 컬러</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">▸</span> <strong>Neon-11 (White)</strong> — 기포·알 질감 사실적 표현</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">▸</span> 일반 조명 ↔ UV 아래에서 극명한 컬러 반전</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">▸</span> Bubble Dot 바디 위 도포 시 기포 질감 극대화</li>
+                        </ul>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 text-slate-400 text-sm font-bold select-none">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                            </svg>
+                            아카이브 보유 재료
+                        </span>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
