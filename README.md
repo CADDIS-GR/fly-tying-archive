@@ -1,213 +1,109 @@
 # 🎣 Fly Tying Archive
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success)](https://caddis-gr.github.io/fly-tying-archive/)
-[![Contents](https://img.shields.io/badge/Contents-12-blue)]()
-[![Categories](https://img.shields.io/badge/Categories-5-purple)]()
-
-관리형 낚시터(저수지) 플라이 낚시를 위한 타잉 패턴 및 철학 아카이브입니다.
-
-## 🌟 프로젝트 소개
-
-이 프로젝트는 관리형 저수지에서 사용하는 플라이 타잉 패턴과 타잉 철학을 체계적으로 정리하고 공유하기 위해 만들어졌습니다. 각 패턴은 실전 경험을 바탕으로 상세한 재료 정보, 타잉 방법, 그리고 사용 조건을 포함하고 있습니다.
-
-**🔗 라이브 사이트:** [https://caddis-gr.github.io/fly-tying-archive/](https://caddis-gr.github.io/fly-tying-archive/)
-
-## 📚 등록된 콘텐츠 (12개)
-
-### 🦟 Chironomid (2개)
-
-#### 1. Zucchini Chironomid Pupa
-- **Hook:** #14
-- **특징:** Dark Zucchini 베이스 + Red Ribbing
-- **마무리:** Thin UV + Varnish
-
-#### 2. 2026 Chironomid Pupa
-- **Hook:** #12
-- **특징:** Deepness 컬러 아키텍처, VEEVUS BQ5 + Under-Layer 밸런스
-- **컨셉:** 밑실 톤으로 완전히 다른 생명체 구현
-
-### 🐟 Streamer (4개)
-
-#### 3. 화이트 버전 리치
-- **Hook:** #16
-- **특징:** Special White + Tan Dubbing 블렌딩
-- **시즌:** 동절기 저수지 필살기
-
-#### 4. Glow Bead Marabou Leech
-- **Hook:** #12
-- **특징:** Black & Purple 마라부 믹스, 야광 텅스텐 비드
-- **용도:** 저광량 공략, 바닥 걸림 최소화
-
-#### 5. White Zonker Collection
-- **Hook:** #16
-- **특징:** Opal Tinsel + Red Thread 포인트
-- **전략:** 6미터 수심 전용, 3가지 컬러 로테이션
-
-#### 6. Black Torpedo Leech
-- **Hook:** #12
-- **특징:** 빠른 침강 + 은밀한 실루엣, Light Blue 버블 트리거
-- **시즌:** Nov-Mar 동절기 특화
-
-### 🪝 Nymph (1개) ⭐ NEW!
-
-#### 7. Zebra Midge
-- **Hook:** #16~#20+
-- **특징:** 미지 퓨파를 모방한 리얼리스틱 님프. 연중 사용 가능.
-- **컬러:** Black/Silver (클래식), Red/Black (고대비), Olive/Copper (변화구)
-- **리그:** Double Nymph Rig / Dry-Dropper Rig
-- **Source:** Ventures Fly Co. Cheat Sheet V1.0
-
-### 🔬 Technique (3개)
-
-#### 8. State Over Organ - 하얀 점의 철학
-> *"플라이 타잉은 기관을 재현하는 게 아니라, 송어가 인식하는 '상태'를 재현하는 작업입니다."*
-
-- **주제:** Chironomid Pupa의 핵심 트리거 분석
-- **핵심 개념:** 
-  - **날개 주머니 (Wing Case)** - 입체적인 볼륨감
-  - **아가미와 기포 (Gills & Bubble)** - 강렬한 빛의 신호
-- **재료 전략:**
-  - **흰색 비드 (Bead)** - 단단한 가스 버블 재현
-  - **흰색 얀 (Yarn)** - 생생한 아가미 재현
-  - **Glo-Brite White(16)** - UV 신호 극대화
-
-#### 9. 낚시대장의 플라이 컬러 전략 가이드
-> *"송어에게 보여지는 색(시인성)이어야 하고, 송어가 좋아하는 색(선호도)이어야 한다!"*
-
-- **버전:** V3.1 철학 에디션
-- **기본 베이스:** Veevus Body Quill BQ1(Black)
-- **전략적 색상 분류:**
-  1. **무채색 그룹 (Neutral)** - 극강의 시인성
-  2. **유채색 그룹 (Attractor)** - 본능적 선호도
-  3. **징검다리 그룹 (Stepping Stone)** - 조화의 균형
-  4. **톤다운 & 구조색 (Advanced)** - 성숙한 선호도
-- **특징:** 4컷 인포그래픽, 다크/라이트 테마 토글, Editorial 매거진 스타일
-
-#### 10. Air Bubble & Hot Spot 마스터클래스 ⭐ NEW!
-> *"생명력은 빛에서 온다. Bubble이 숨을 불어넣고, Hot Spot이 방아쇠를 당긴다."*
-
-- **주제:** 관리형 저수지 송어를 유혹하는 핵심 공식
-- **핵심 개념:**
-  - **Bubble Dot** - 공기방울 생명력 모방
-  - **UV Neon Hot Spot** - 공격 트리거
-- **특징:** 인터랙티브 재료 조합 시뮬레이터
-
-### 📚 Collection (2개)
-
-#### 11. Blue Collection - Quiet Signal
-> *"블루는 늘 마지막에 고려되고, 하지만 한 번 선택되면 쉽게 빠지지 않는다."*
-
-- **테마:** 조용한 신호 - 블루 컬러 스토리
-- **포함 패턴:** Blue Pheasant Tail / Blue Pupa / Blue Spider / Blue Collar Worker
-
-#### 12. White Pupa, Pink Larva Collection
-> *"입질은 우연이 아니라, 완벽하게 설계된 '뉴앙스'의 결과다."*
-
-- **테마:** 프리미엄 동절기 3종 세트
-- **포함 패턴:** Pink Larva 3D / Pink Larva 2D / White Pupa
-- **핵심 기법:** Bubble Dot, Thin UV Resin + Vanish Coat
-
-## ✨ 주요 기능
-
-### 메인 아카이브 페이지
-- 🔍 **실시간 검색** - 패턴명, 설명 기반 필터링
-- 🏷️ **카테고리 필터** - All, Chironomid, Nymph, Dry Fly, Streamer, Emerger, 📚 Collection, 🔬 Techniques
-- 📱 **반응형 디자인** - 모바일/태블릿/데스크톱 지원
-- 📊 **통계 대시보드** - 패턴 수, 카테고리 수 실시간 표시
-- 🎨 **모던 UI** - 보라색 그라디언트 + Glassmorphism
-
-## 🛠️ 기술 스택
-
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Fonts:** Playfair Display, Noto Sans KR, Crimson Pro, System fonts
-- **Hosting:** GitHub Pages
-- **Design:** Glassmorphism, Hero Section, Magazine Style Typography, Dark/Light Theme Toggle
-
-## 📂 프로젝트 구조
-
-```
-fly-tying-archive/
-├── index.html
-├── README.md
-├── docs/
-│   └── air-bubble-hotspot.html      # Air Bubble & Hot Spot 마스터클래스
-├── flies/
-│   ├── chironomid/
-│   ├── streamer/
-│   ├── nymph/
-│   │   └── zebra-midge/             # ⭐ NEW!
-│   │       ├── index.html
-│   │       └── Cheat_Sheet__Zebra_Midge__V1_0.pdf
-│   ├── blue-collection/
-│   └── tech/
-│       ├── white-dot-philosophy/
-│       └── color-strategy/
-└── images/
-    ├── ZebraMidge-01.jpg            # ⭐ NEW!
-    └── ...
-```
-
-## 📅 업데이트 로그
-
-### 2026-02-13 ⭐ Nymph 카테고리 신설 + 2개 콘텐츠 추가
-- 🪝 **Zebra Midge 추가** (Nymph 카테고리 신설)
-  - 미지 퓨파 모방 리얼리스틱 님프
-  - Black/Silver · Red/Black · Olive/Copper 3컬러 전략
-  - Double Nymph / Dry-Dropper 리그 가이드
-  - 관리형 저수지 적용 팁 포함
-  - 원본 PDF (Ventures Fly Co. Cheat Sheet V1.0) 링크
-- 🔬 **Air Bubble & Hot Spot 마스터클래스 추가**
-  - Bubble Dot 생명력 모방 + UV Neon Hot Spot 공격 트리거
-  - 인터랙티브 재료 조합 시뮬레이터
-- 📊 **통계 업데이트**
-  - 총 콘텐츠: 12개
-  - 카테고리: 5개 (Chironomid, Nymph, Streamer, Technique, Collection)
-
-### 2026-02-05 ⭐ 색상 전략 가이드 추가
-- 🎨 **낚시대장의 플라이 컬러 전략 가이드 V3.1 추가**
-  - 시인성과 선호도의 균형 철학
-  - 4컷 인포그래픽, 다크/라이트 테마 토글
-  - 전략적 색상 분류 (무채색, 유채색, 징검다리, 톤다운)
-
-### 2026-01-30
-- 📚 **White Pupa, Pink Larva Collection 추가**
-
-### 2026-01-24
-- 📚 **Collection 카테고리 신설**
-- 🎨 **Blue Collection - Quiet Signal 추가**
-
-### 2026-01-29
-- 🔬 **Technique 카테고리 신설**
-- 🎨 **State Over Organ 기법 페이지 추가**
-
-### 2026-01-20
-- 🎉 프로젝트 시작
-- 6개 패턴 등록 (Chironomid 2개, Streamer 4개)
-
-## 💡 프로젝트 철학
-
-> *"플라이 타잉은 기관을 재현하는 게 아니라,  
-> 송어가 인식하는 **'상태'**를 재현하는 작업입니다."*  
-> — 낚시대장
-
-> *"송어에게 보여지는 색(시인성)이어야 하고,  
-> 송어가 좋아하는 색(선호도)이어야 한다!"*  
-> — 낚시대장의 플라이 컬러 전략
-
-> *"입질은 우연이 아니라, 완벽하게 설계된 '뉴앙스'의 결과다."*  
-> — White Pupa, Pink Larva Collection
-
-이 프로젝트는 단순한 패턴 카탈로그를 넘어, 플라이 타잉의 본질적인 철학과 사고방식을 담고자 합니다.
+**낚시대장의 플라이 타잉 패턴 아카이브**
+관리형 저수지(한터, 신기) 송어 플라이낚시를 위한 실전 패턴 컬렉션
 
 ---
 
-<div align="center">
+## 📊 현황
 
-**Made with ❤️ by 낚시대장 | 2026 Season**
+| 항목 | 내용 |
+|------|------|
+| 총 패턴 수 | **13 Patterns** |
+| 카테고리 | 5 Categories |
+| 시즌 | 2026 |
+| 마지막 업데이트 | 2026-02-26 |
 
-*"송어에게 보여지는 색이어야 하고, 송어가 좋아하는 색이어야 한다!"*
+---
 
-[![GitHub](https://img.shields.io/badge/GitHub-CADDIS--GR-181717?logo=github)](https://github.com/CADDIS-GR/fly-tying-archive)
-[![Website](https://img.shields.io/badge/Website-Live-success)](https://caddis-gr.github.io/fly-tying-archive/)
+## 📁 패턴 목록
 
-</div>
+### 🔵 Chironomid (2)
+| # | 패턴명 | 훅 | 날짜 |
+|---|--------|-----|------|
+| 01 | [Zucchini Chironomid Pupa](flies/chironomid/zucchini-pupa/index.html) | #14 | 2026-01-20 |
+| 02 | [2026 Chironomid Pupa](flies/chironomid/2026-chironomid-pupa/index.html) | #12 | 2026-01-23 |
+
+### 🟢 Nymph (3)
+| # | 패턴명 | 훅 | 날짜 |
+|---|--------|-----|------|
+| 12 | [Zebra Midge](flies/nymph/zebra-midge/index.html) | #16-20+ | 2026-02-13 |
+| 13 | [Midge Larva, Pupa Collection](flies/nymph/midge-collection/index.html) | #18-20 | 2026-02-26 |
+
+### 🔴 Streamer (4)
+| # | 패턴명 | 훅 | 날짜 |
+|---|--------|-----|------|
+| 03 | [화이트 버전 리치](flies/streamer/white-version-leech/index.html) | #16 | 2026-01-20 |
+| 04 | [Glow Bead Marabou Leech](flies/streamer/glow-bead-marabou-leech/index.html) | #12 | 2026-01-20 |
+| 05 | [White Zonker Collection](flies/streamer/white-zonker-collection/index.html) | #16 | 2026-01-20 |
+| 06 | [Black Torpedo Leech](flies/streamer/black-torpedo-leech/index.html) | #12 | 2026-01-20 |
+
+### 📚 Collection (2)
+| # | 패턴명 | 훅 | 날짜 |
+|---|--------|-----|------|
+| 08 | [Blue Collection - Quiet Signal](flies/blue-collection/index.html) | #12-16 | 2026-01-24 |
+| 09 | [White Pupa, Pink Larva Collection](flies/chironomid/white-pupa-pink-larva/index.html) | #14 | 2026-01-30 |
+
+### 🔬 Techniques (3)
+| # | 패턴명 | 날짜 |
+|---|--------|------|
+| 07 | [State Over Organ - 하얀 점의 철학](flies/tech/white-dot-philosophy/index.html) | 2026-01-29 |
+| 10 | [플라이 컬러 전략 가이드 V3.1](flies/tech/color-strategy/index.html) | 2026-02-05 |
+| 11 | [Air Bubble & Hot Spot 마스터클래스](docs/air-bubble-hotspot.html) | 2026-02-13 |
+
+---
+
+## 🗂️ 디렉토리 구조
+
+```
+fly-tying-archive/
+├── index.html                          # 메인 아카이브
+├── README.md
+├── images/                             # 공용 이미지
+├── docs/
+│   └── air-bubble-hotspot.html
+└── flies/
+    ├── chironomid/
+    │   ├── zucchini-pupa/
+    │   ├── 2026-chironomid-pupa/
+    │   └── white-pupa-pink-larva/
+    ├── nymph/
+    │   ├── zebra-midge/
+    │   └── midge-collection/           # ← 2026-02-26 추가
+    ├── streamer/
+    │   ├── white-version-leech/
+    │   ├── glow-bead-marabou-leech/
+    │   ├── white-zonker-collection/
+    │   └── black-torpedo-leech/
+    ├── blue-collection/
+    └── tech/
+        ├── white-dot-philosophy/
+        └── color-strategy/
+```
+
+---
+
+## 🎯 주요 타겟
+
+- **낚시터**: 한터낚시리조트, 신기낚시터 (관리형 저수지)
+- **대상어**: 무지개송어 (Rainbow Trout)
+- **주력 수심**: 4~6m (풀 싱킹 라인 운용)
+- **주력 채비**: 유로님핑, 인디케이터, 드롭퍼 리그
+
+---
+
+## 📝 업데이트 히스토리
+
+| 날짜 | 내용 |
+|------|------|
+| 2026-02-26 | Midge Larva, Pupa Collection 추가 (3종: Resin/Quill/Thread) |
+| 2026-02-13 | Zebra Midge, Air Bubble & Hot Spot 마스터클래스 추가 |
+| 2026-02-05 | 플라이 컬러 전략 가이드 V3.1 추가 |
+| 2026-01-30 | White Pupa, Pink Larva Collection 추가 |
+| 2026-01-29 | State Over Organ - 하얀 점의 철학 추가 |
+| 2026-01-24 | Blue Collection - Quiet Signal 추가 |
+| 2026-01-20~23 | 초기 패턴 7종 등록 |
+
+---
+
+*낚시대장 · CADDIS-GR · 2026*
