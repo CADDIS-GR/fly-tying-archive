@@ -3,159 +3,363 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fly Tying Archive | 플라이 타잉 패턴 아카이브</title>
+  <title>낚시대장의 플라이 타잉 아카이브</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=Source+Sans+3:wght@300;400;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 2rem 1rem; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    header { text-align: center; color: white; margin-bottom: 3rem; padding: 2rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.2); }
-    h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .subtitle { font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
-    .stats { display: flex; gap: 2rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
-    .stat-item { background: rgba(255,255,255,0.2); padding: 0.75rem 1.5rem; border-radius: 2rem; font-size: 0.9rem; }
-    .stat-number { font-weight: bold; font-size: 1.2rem; margin-right: 0.3rem; }
-    .search-bar { margin-bottom: 2rem; position: relative; }
-    .search-input { width: 100%; padding: 1rem 1rem 1rem 3rem; border: none; border-radius: 1rem; font-size: 1rem; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #94a3b8; }
-    .categories { display: flex; gap: 0.75rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; }
-    .category-btn { padding: 0.6rem 1.2rem; border: 2px solid white; background: rgba(255,255,255,0.1); color: white; border-radius: 2rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; backdrop-filter: blur(10px); }
-    .category-btn:hover, .category-btn.active { background: white; color: #667eea; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-    .patterns-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-    .pattern-card { background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; }
-    .pattern-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
-    .pattern-image { width: 100%; height: 200px; object-fit: cover; background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%); display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.875rem; overflow: hidden; }
-    .pattern-image img { width: 100%; height: 100%; object-fit: cover; }
-    .pattern-content { padding: 1.25rem; }
-    .pattern-category { display: inline-block; padding: 0.25rem 0.75rem; background: #ddd6fe; color: #6d28d9; border-radius: 1rem; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; }
-    .pattern-name { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; }
-    .pattern-description { font-size: 0.875rem; color: #64748b; line-height: 1.5; margin-bottom: 1rem; }
-    .pattern-meta { display: flex; gap: 1rem; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 0.75rem; }
-    .pattern-meta-item { display: flex; align-items: center; gap: 0.25rem; }
-    .add-pattern-btn { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; font-size: 2rem; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
-    .add-pattern-btn:hover { transform: scale(1.1) rotate(90deg); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
-    .empty-state { text-align: center; padding: 4rem 2rem; color: white; }
-    .empty-state svg { width: 100px; height: 100px; margin-bottom: 1rem; opacity: 0.5; }
-    @media (max-width: 768px) { h1 { font-size: 1.75rem; } .patterns-grid { grid-template-columns: 1fr; } }
+    :root {
+      --forest:       #1a2e1e;
+      --forest-mid:   #243329;
+      --forest-card:  #2a3d2f;
+      --forest-hover: #31473a;
+      --moss:         #3d5c42;
+      --sage:         #7a9e7e;
+      --leaf:         #a8c49e;
+      --cream:        #f5efe0;
+      --cream-muted:  #9ab5a0;
+      --border:       rgba(245,239,224,0.09);
+      --border-mid:   rgba(245,239,224,0.18);
+      --tag-bg:       rgba(245,239,224,0.05);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--forest);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .hero {
+      position: relative;
+      padding: 5rem 2rem 3.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 340px;
+      background: radial-gradient(ellipse at center, rgba(168,196,158,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.65rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1.4rem;
+    }
+    .hero-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: 700; line-height: 1.0;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .hero-title em { font-style: italic; color: var(--leaf); }
+    .hero-sub {
+      font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 2.8rem;
+    }
+    .hero-divider {
+      width: 48px; height: 1px; background: var(--sage);
+      margin: 0 auto 2.5rem; opacity: 0.4;
+    }
+    .hero-stats {
+      display: inline-flex;
+      border: 1px solid rgba(168,196,158,0.22);
+      border-radius: 2px; overflow: hidden;
+    }
+    .stat {
+      padding: 0.65rem 1.7rem; text-align: center;
+      border-right: 1px solid rgba(168,196,158,0.18);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--leaf); display: block;
+    }
+    .stat-label {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage);
+    }
+    .controls {
+      max-width: 860px; margin: 0 auto;
+      padding: 2rem 2rem 1.5rem;
+    }
+    .search-wrap { position: relative; margin-bottom: 1.25rem; }
+    .search-wrap svg {
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      color: var(--moss); width: 15px; height: 15px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 2.7rem;
+      background: var(--forest-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--cream);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.88rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input::placeholder { color: var(--moss); }
+    .search-input:focus { border-color: rgba(168,196,158,0.35); }
+    .filters { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 0.38rem 0.95rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--sage);
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px; cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: rgba(168,196,158,0.3); color: var(--leaf); }
+    .filter-btn.active { background: rgba(168,196,158,0.1); border-color: rgba(168,196,158,0.4); color: var(--leaf); }
+    .section-label {
+      max-width: 1240px; margin: 0 auto;
+      padding: 0 2rem 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label span {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--sage); white-space: nowrap;
+    }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+    .grid-wrap {
+      max-width: 1240px; margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+    .patterns-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+    }
+    .pattern-card {
+      background: var(--forest-card);
+      cursor: pointer; transition: background 0.25s;
+      overflow: hidden; display: flex; flex-direction: column;
+      position: relative;
+    }
+    .pattern-card:hover { background: var(--forest-hover); }
+    .pattern-card.featured { grid-column: span 2; grid-row: span 2; }
+    .card-img {
+      width: 100%; height: 190px;
+      object-fit: cover; display: block;
+      filter: brightness(0.82) saturate(0.85);
+      transition: filter 0.35s;
+    }
+    .pattern-card.featured .card-img { height: 320px; }
+    .pattern-card:hover .card-img { filter: brightness(0.95) saturate(1.05); }
+    .card-img-placeholder {
+      width: 100%; height: 190px;
+      background: var(--forest-mid);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--moss); font-size: 2rem;
+    }
+    .pattern-card.featured .card-img-placeholder { height: 320px; }
+    .card-body {
+      padding: 1.15rem 1.4rem 1.4rem;
+      flex: 1; display: flex; flex-direction: column; gap: 0.55rem;
+    }
+    .card-top { display: flex; align-items: center; justify-content: space-between; }
+    .card-category {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--leaf);
+      border: 1px solid rgba(168,196,158,0.28);
+      padding: 0.18rem 0.45rem; border-radius: 1px;
+    }
+    .card-date {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.58rem; color: var(--moss);
+    }
+    .card-name {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--cream); line-height: 1.3;
+    }
+    .pattern-card.featured .card-name { font-size: 1.4rem; }
+    .card-desc {
+      font-size: 0.77rem; color: var(--cream-muted); line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .card-tags {
+      display: flex; flex-wrap: wrap; gap: 0.32rem;
+      margin-top: auto; padding-top: 0.5rem;
+    }
+    .tag {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.57rem; letter-spacing: 0.06em;
+      padding: 0.18rem 0.48rem;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--cream-muted); border-radius: 1px;
+    }
+    .tag.hi { border-color: rgba(168,196,158,0.22); color: rgba(168,196,158,0.82); }
+    .card-arrow {
+      position: absolute; bottom: 1.15rem; right: 1.4rem;
+      width: 24px; height: 24px;
+      border: 1px solid var(--border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--moss); opacity: 0; transform: translateX(-4px);
+      transition: all 0.22s;
+    }
+    .pattern-card:hover .card-arrow {
+      opacity: 1; transform: translateX(0);
+      border-color: rgba(168,196,158,0.3); color: var(--leaf);
+    }
+    .empty {
+      grid-column: 1/-1; text-align: center; padding: 5rem 2rem;
+      color: var(--moss); background: var(--forest-card);
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem; text-align: center;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--moss);
+    }
+    @media (max-width: 900px) {
+      .patterns-grid { grid-template-columns: repeat(2, 1fr); }
+      .pattern-card.featured { grid-column: span 2; grid-row: span 1; }
+      .pattern-card.featured .card-img { height: 240px; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 1.5rem 2.5rem; }
+      .patterns-grid { grid-template-columns: 1fr; }
+      .pattern-card.featured { grid-column: span 1; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>🎣 Fly Tying Archive</h1>
-      <p class="subtitle">플라이 타잉 패턴 아카이브</p>
-      <div class="stats">
-        <div class="stat-item"><span class="stat-number" id="totalPatterns">13</span><span>Patterns</span></div>
-        <div class="stat-item"><span class="stat-number" id="totalCategories">5</span><span>Categories</span></div>
-        <div class="stat-item"><span class="stat-number">2026</span><span>Season</span></div>
-      </div>
-    </header>
-    <div class="search-bar">
-      <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+  <header class="hero">
+    <p class="hero-eyebrow">낚시대장의 플라이 타잉</p>
+    <h1 class="hero-title">The <em>Fly</em><br>Archive</h1>
+    <p class="hero-sub">관리형 저수지 · 송어 · 플라이 패턴 컬렉션</p>
+    <div class="hero-divider"></div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" id="totalPatternsNum">13</span><span class="stat-label">Patterns</span></div>
+      <div class="stat"><span class="stat-num" id="totalCatsNum">5</span><span class="stat-label">Categories</span></div>
+      <div class="stat"><span class="stat-num">2026</span><span class="stat-label">Season</span></div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
       </svg>
-      <input type="text" class="search-input" placeholder="패턴 검색..." id="searchInput">
+      <input type="text" class="search-input" placeholder="패턴 검색 — 이름, 재료, 카테고리…" id="searchInput">
     </div>
-    <div class="categories">
-      <button class="category-btn active" data-category="all">All</button>
-      <button class="category-btn" data-category="chironomid">Chironomid</button>
-      <button class="category-btn" data-category="nymph">Nymph</button>
-      <button class="category-btn" data-category="dry-fly">Dry Fly</button>
-      <button class="category-btn" data-category="streamer">Streamer</button>
-      <button class="category-btn" data-category="emerger">Emerger</button>
-      <button class="category-btn" data-category="collection">📚 Collection</button>
-      <button class="category-btn" data-category="technique">🔬 Techniques</button>
+    <div class="filters">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="chironomid">Chironomid</button>
+      <button class="filter-btn" data-category="nymph">Nymph</button>
+      <button class="filter-btn" data-category="dry-fly">Dry Fly</button>
+      <button class="filter-btn" data-category="streamer">Streamer</button>
+      <button class="filter-btn" data-category="emerger">Emerger</button>
+      <button class="filter-btn" data-category="collection">Collection</button>
+      <button class="filter-btn" data-category="technique">Technique</button>
     </div>
-    <div class="patterns-grid" id="patternsGrid"></div>
-    <button class="add-pattern-btn" title="새 패턴 추가">+</button>
   </div>
 
+  <div class="section-label">
+    <span id="sectionLabelText">전체 패턴</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="grid-wrap">
+    <div class="patterns-grid" id="patternsGrid"></div>
+  </div>
+
+  <footer>The Fly Archive — 낚시대장 × 2026 시즌 · 관리형 저수지 플라이피싱</footer>
+
   <script>
+    const CAT = { chironomid:'Chironomid', nymph:'Nymph', streamer:'Streamer', 'dry-fly':'Dry Fly', emerger:'Emerger', collection:'Collection', technique:'Technique' };
     const patterns = [
-      { id: 1, name: 'Zucchini Chironomid Pupa', category: 'chironomid', description: 'Dark Zucchini 베이스에 Red Ribbing을 사용한 리얼리스틱 카이로노미드 퓨파. Thin UV + Varnish 마무리.', hook: '#14', image: 'flies/chironomid/zucchini-pupa/zucchini-pupa.jpg', date: '2026-01-20', url: 'flies/chironomid/zucchini-pupa/index.html' },
-      { id: 2, name: '2026 Chironomid Pupa', category: 'chironomid', description: 'Deepness 컬러 아키텍처. VEEVUS BQ5 + Under-Layer 밸런스. 밑실 톤으로 완전히 다른 생명체 구현.', hook: '#12', image: 'flies/chironomid/2026-chironomid-pupa/olive-chironomid.jpg', date: '2026-01-23', url: 'flies/chironomid/2026-chironomid-pupa/index.html' },
-      { id: 3, name: '화이트 버전 리치', category: 'streamer', description: 'Special White + Tan Dubbing 블렌딩. 동절기 저수지 필살기. Red Hotspot으로 마무리.', hook: '#16', image: 'flies/streamer/white-version-leech/white-version-leech.jpg', date: '2026-01-20', url: 'flies/streamer/white-version-leech/index.html' },
-      { id: 4, name: 'Glow Bead Marabou Leech', category: 'streamer', description: 'Black & Purple 마라부 믹스. 야광 텅스텐 비드로 저광량 공략. 지그 훅으로 바닥 걸림 최소화.', hook: '#12', image: 'flies/streamer/glow-bead-marabou-leech/glow-bead-marabou-leech.jpg', date: '2026-01-20', url: 'flies/streamer/glow-bead-marabou-leech/index.html' },
-      { id: 5, name: 'White Zonker Collection', category: 'streamer', description: '6미터 수심 전용. Opal Tinsel + Red Thread 포인트. 3가지 컬러 로테이션 전략 포함.', hook: '#16', image: 'flies/streamer/white-zonker-collection/white-zonker-main.jpg', date: '2026-01-20', url: 'flies/streamer/white-zonker-collection/index.html' },
-      { id: 6, name: 'Black Torpedo Leech', category: 'streamer', description: '빠른 침강 + 은밀한 실루엣. Light Blue 버블 트리거. Nov-Mar 동절기 특화.', hook: '#12', image: 'flies/streamer/black-torpedo-leech/black-torpedo-leech.jpg', date: '2026-01-20', url: 'flies/streamer/black-torpedo-leech/index.html' },
-      { id: 7, name: 'State Over Organ', category: 'technique', description: '"진짜보다 더 진짜 같은 상태를 묶다" - 하얀 점의 철학. Chironomid Pupa의 핵심 트리거 분석.', hook: 'Philosophy', image: 'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/Pupa.jpg', date: '2026-01-29', url: 'flies/tech/white-dot-philosophy/index.html' },
-      { id: 8, name: 'Blue Collection - Quiet Signal', category: 'collection', description: '조용한 신호 - 블루 컬러 스토리. 4개의 블루 패턴 (Pheasant Tail, Pupa, Spider, Blue Collar Worker). 느리게 가라앉고, 천천히 움직이는.', hook: '#12-16', image: 'images/BluePheasantTail.jpg', date: '2026-01-24', url: 'flies/blue-collection/index.html' },
-      { id: 9, name: 'White Pupa, Pink Larva Collection', category: 'collection', description: '프리미엄 3종 세트 - Pink Larva 3D/2D, White Pupa. Bubble Dot 기법으로 공기방울 재현. 한겨울 필살기.', hook: '#14', image: 'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/PinkLarvar_3D.jpg', date: '2026-01-30', url: 'flies/chironomid/white-pupa-pink-larva/index.html' },
-      { id: 10, name: '낚시대장의 플라이 컬러 전략 가이드', category: 'technique', description: '시인성과 선호도의 균형 - BQ1 Black 바디 기반 색상 전략. 무채색, 유채색, 징검다리, 톤다운 4가지 그룹 분석. 상황별 최적 색상 선택 가이드.', hook: 'V3.1', image: 'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/BackImage.jpg', date: '2026-02-05', url: 'flies/tech/color-strategy/index.html' },
-      { id: 11, name: 'Air Bubble & Hot Spot 마스터클래스', category: 'technique', description: '관리형 저수지 송어를 유혹하는 핵심 공식. Bubble Dot 생명력 모방 + UV Neon Hot Spot 공격 트리거. 인터랙티브 시뮬레이터로 재료 조합 성능 분석.', hook: 'Interactive', image: 'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/OilPupa.jpg', date: '2026-02-13', url: 'docs/air-bubble-hotspot.html' },
-      { id: 12, name: 'Zebra Midge', category: 'nymph', description: '미지 퓨파를 모방한 리얼리스틱 님프. 연중 사용 가능. Black/Silver 클래식, Red/Black 고대비, Olive/Copper 변화구. Double Nymph 또는 Dry-Dropper 리그 권장.', hook: '#16-20+', image: 'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/ZebraMidge-01.jpg', date: '2026-02-13', url: 'flies/nymph/zebra-midge/index.html' },
-      // ↓ 2026-02-26 추가
-      { id: 13, name: 'Midge Larva, Pupa Collection', category: 'nymph', description: '극소 패턴 3종 세트. #20 TMC2488H White GSP+올리브 라운드립 레진 Larva, #18 Quill Body Midge(퀼+블루 플래시 포인트), #18 Thread Midge(SemperFli Pure Silk Brown). 소재별 체인저 전략.', hook: '#18-20', image: 'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/QuillBodyMidge.jpg', date: '2026-02-26', url: 'flies/nymph/midge-collection/index.html' }
+      { id:1,  name:'Zucchini Chironomid Pupa',           category:'chironomid', description:'Dark Zucchini 베이스에 Red Ribbing을 사용한 리얼리스틱 카이로노미드 퓨파. Thin UV + Varnish 마무리.',                hook:'#14',        tags:['bead:silver','body:zucchini','rib:red'],               image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/flies/chironomid/zucchini-pupa/zucchini-pupa.jpg',                                                                      date:'2026-01-20', url:'flies/chironomid/zucchini-pupa/index.html' },
+      { id:2,  name:'2026 Chironomid Pupa',                category:'chironomid', description:'Deepness 컬러 아키텍처. VEEVUS BQ5 + Under-Layer 밸런스. 밑실 톤으로 완전히 다른 생명체 구현.',                     hook:'#12',        tags:['bead:black','thread:veevus-bq5','finish:uv'],          image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/flies/chironomid/2026-chironomid-pupa/olive-chironomid.jpg',                                                            date:'2026-01-23', url:'flies/chironomid/2026-chironomid-pupa/index.html' },
+      { id:3,  name:'화이트 버전 리치',                    category:'streamer',   description:'Special White + Tan Dubbing 블렌딩. 동절기 저수지 필살기. Red Hotspot으로 마무리.',                               hook:'#16',        tags:['bead:gold','body:white+tan','hotspot:red'],            image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/flies/streamer/white-version-leech/white-version-leech.jpg',                                                            date:'2026-01-20', url:'flies/streamer/white-version-leech/index.html' },
+      { id:4,  name:'Glow Bead Marabou Leech',            category:'streamer',   description:'Black & Purple 마라부 믹스. 야광 텅스텐 비드로 저광량 공략. 지그 훅으로 바닥 걸림 최소화.',                         hook:'#12',        tags:['bead:glow','body:marabou','hook:jig'],                 image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/flies/streamer/glow-bead-marabou-leech/glow-bead-marabou-leech.jpg',                                                    date:'2026-01-20', url:'flies/streamer/glow-bead-marabou-leech/index.html' },
+      { id:5,  name:'White Zonker Collection',            category:'streamer',   description:'6미터 수심 전용. Opal Tinsel + Red Thread 포인트. 3가지 컬러 로테이션 전략 포함.',                               hook:'#16',        tags:['rib:opal-tinsel','hotspot:red','depth:6m'],            image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/flies/streamer/white-zonker-collection/white-zonker-main.jpg',                                                          date:'2026-01-20', url:'flies/streamer/white-zonker-collection/index.html' },
+      { id:6,  name:'Black Torpedo Leech',                category:'streamer',   description:'빠른 침강 + 은밀한 실루엣. Light Blue 버블 트리거. Nov–Mar 동절기 특화.',                                         hook:'#12',        tags:['bead:black','body:black','trigger:blue-bubble'],       image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/flies/streamer/black-torpedo-leech/black-torpedo-leech.jpg',                                                            date:'2026-01-20', url:'flies/streamer/black-torpedo-leech/index.html' },
+      { id:7,  name:'State Over Organ',                   category:'technique',  description:'"진짜보다 더 진짜 같은 상태를 묶다" — 하얀 점의 철학. Chironomid Pupa의 핵심 트리거 분석.',                        hook:'Philosophy', tags:['type:analysis','trigger:white-dot','pattern:chironomid'], image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/Pupa.jpg',                                  date:'2026-01-29', url:'flies/tech/white-dot-philosophy/index.html' },
+      { id:8,  name:'Blue Collection — Quiet Signal',    category:'collection', description:'4개의 블루 패턴. Pheasant Tail, Pupa, Spider, Blue Collar Worker. 느리게, 천천히.',                            hook:'#12–16',     tags:['color:blue','type:collection','count:4'],              image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/BluePheasantTail.jpg',                                                                                            date:'2026-01-24', url:'flies/blue-collection/index.html' },
+      { id:9,  name:'White Pupa, Pink Larva Collection', category:'collection', description:'프리미엄 3종 세트. Pink Larva 3D/2D + White Pupa. Bubble Dot 기법으로 공기방울 재현.',                          hook:'#14',        tags:['finish:bubble-dot','color:pink+white','count:3'],      image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/PinkLarvar_3D.jpg',                         date:'2026-01-30', url:'flies/chironomid/white-pupa-pink-larva/index.html' },
+      { id:10, name:'낚시대장의 플라이 컬러 전략 가이드', category:'technique',  description:'시인성과 선호도의 균형. BQ1 Black 바디 기반 색상 전략. 무채색·유채색·징검다리·톤다운 4그룹 분석.',              hook:'V3.1',       tags:['type:guide','version:3.1','topic:color'],              image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/BackImage.jpg',                              date:'2026-02-05', url:'flies/tech/color-strategy/index.html' },
+      { id:11, name:'Air Bubble & Hot Spot 마스터클래스', category:'technique',  description:'관리형 저수지 송어를 유혹하는 핵심 공식. Bubble Dot + UV Neon Hot Spot. 인터랙티브 시뮬레이터.',               hook:'Interactive', tags:['type:interactive','trigger:bubble','trigger:hotspot'],  image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/OilPupa.jpg',                                date:'2026-02-13', url:'docs/air-bubble-hotspot.html' },
+      { id:12, name:'Zebra Midge',                        category:'nymph',      description:'미지 퓨파를 모방한 리얼리스틱 님프. Black/Silver 클래식, Red/Black 고대비, Olive/Copper 변화구.',               hook:'#16–20+',    tags:['bead:silver','rib:wire','body:thread'],                image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/ZebraMidge-01.jpg',                         date:'2026-02-13', url:'flies/nymph/zebra-midge/index.html' },
+      { id:13, name:'Midge Larva, Pupa Collection',      category:'nymph',      description:'극소 패턴 3종. #20 GSP+올리브 라운드립 레진 Larva, #18 Quill Body Midge, #18 Thread Midge(Pure Silk).',  hook:'#18–20',     tags:['thread:gsp','body:quill','finish:resin'],              image:'https://raw.githubusercontent.com/CADDIS-GR/fly-tying-archive/main/images/QuillBodyMidge.jpg',                       date:'2026-02-26', url:'flies/nymph/midge-collection/index.html' }
     ];
 
-    const patternsGrid = document.getElementById('patternsGrid');
-    const searchInput = document.getElementById('searchInput');
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const totalPatternsEl = document.getElementById('totalPatterns');
-    const totalCategoriesEl = document.getElementById('totalCategories');
+    const grid = document.getElementById('patternsGrid');
+    const searchEl = document.getElementById('searchInput');
+    const btns = document.querySelectorAll('.filter-btn');
+    const labelEl = document.getElementById('sectionLabelText');
+    let activeCat = 'all', term = '';
 
-    let currentCategory = 'all';
-    let searchTerm = '';
-
-    function createPatternCard(pattern) {
-      const card = document.createElement('div');
-      card.className = 'pattern-card';
-      card.onclick = () => { if (pattern.url) window.location.href = pattern.url; };
-
-      const imageContent = pattern.image
-        ? `<img src="${pattern.image}" alt="${pattern.name}">`
-        : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;font-size:3rem;">🎣</div>`;
-
-      card.innerHTML = `
-        <div class="pattern-image">${imageContent}</div>
-        <div class="pattern-content">
-          <span class="pattern-category">${pattern.category}</span>
-          <h3 class="pattern-name">${pattern.name}</h3>
-          <p class="pattern-description">${pattern.description}</p>
-          <div class="pattern-meta">
-            <div class="pattern-meta-item">
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-              ${pattern.hook}
-            </div>
-            <div class="pattern-meta-item">
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-              ${pattern.date}
-            </div>
+    function makeCard(p, featured) {
+      const el = document.createElement('div');
+      el.className = 'pattern-card' + (featured ? ' featured' : '');
+      el.onclick = () => { if (p.url) window.location.href = p.url; };
+      const imgHtml = p.image
+        ? `<img class="card-img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="card-img-placeholder" style="display:none;">🎣</div>`
+        : `<div class="card-img-placeholder">🎣</div>`;
+      const hookTag = `<span class="tag">hook:${p.hook}</span>`;
+      const tags = p.tags.map(t => {
+        const hi = t.startsWith('bead:') || t.startsWith('body:');
+        return `<span class="tag${hi ? ' hi' : ''}">${t}</span>`;
+      }).join('');
+      el.innerHTML = `${imgHtml}
+        <div class="card-body">
+          <div class="card-top">
+            <span class="card-category">${CAT[p.category] || p.category}</span>
+            <span class="card-date">${p.date}</span>
           </div>
+          <h2 class="card-name">${p.name}</h2>
+          <p class="card-desc">${p.description}</p>
+          <div class="card-tags">${hookTag}${tags}</div>
         </div>
-      `;
-      return card;
+        <div class="card-arrow">
+          <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M7 7h10v10"/>
+          </svg>
+        </div>`;
+      return el;
     }
 
-    function renderPatterns() {
-      patternsGrid.innerHTML = '';
-      const filteredPatterns = patterns.filter(pattern => {
-        const matchesCategory = currentCategory === 'all' || pattern.category === currentCategory;
-        const matchesSearch = pattern.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                             pattern.description.toLowerCase().includes(searchTerm.toLowerCase());
-        return matchesCategory && matchesSearch;
+    function render() {
+      grid.innerHTML = '';
+      const q = term.toLowerCase();
+      const list = patterns.filter(p => {
+        const catOk = activeCat === 'all' || p.category === activeCat;
+        const srOk = !q || [p.name, p.description, p.category, ...p.tags].join(' ').toLowerCase().includes(q);
+        return catOk && srOk;
       });
-
-      if (filteredPatterns.length === 0) {
-        patternsGrid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><h3 style="font-size:1.5rem;margin-bottom:0.5rem;">패턴을 찾을 수 없습니다</h3><p>다른 카테고리를 선택하거나 검색어를 변경해보세요</p></div>`;
-      } else {
-        filteredPatterns.forEach(pattern => patternsGrid.appendChild(createPatternCard(pattern)));
+      if (!list.length) {
+        grid.innerHTML = '<div class="empty">패턴을 찾을 수 없습니다</div>';
+        labelEl.textContent = '검색 결과 없음'; return;
       }
-      totalPatternsEl.textContent = patterns.length;
-      const categories = new Set(patterns.map(p => p.category));
-      totalCategoriesEl.textContent = categories.size;
+      labelEl.textContent = activeCat === 'all' ? `전체 패턴 — ${list.length}종` : `${CAT[activeCat]} — ${list.length}종`;
+      list.forEach((p, i) => grid.appendChild(makeCard(p, i === 0 && activeCat === 'all' && !term)));
+      document.getElementById('totalPatternsNum').textContent = patterns.length;
+      document.getElementById('totalCatsNum').textContent = new Set(patterns.map(p => p.category)).size;
     }
 
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        categoryBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentCategory = btn.dataset.category;
-        renderPatterns();
-      });
-    });
-
-    searchInput.addEventListener('input', (e) => { searchTerm = e.target.value; renderPatterns(); });
-    renderPatterns();
+    btns.forEach(b => b.addEventListener('click', () => {
+      btns.forEach(x => x.classList.remove('active'));
+      b.classList.add('active'); activeCat = b.dataset.category; render();
+    }));
+    searchEl.addEventListener('input', e => { term = e.target.value; render(); });
+    render();
   </script>
 </body>
 </html>
